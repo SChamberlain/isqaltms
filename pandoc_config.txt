@@ -1,0 +1,7 @@
+format: latex
+latex-engine: xelatex
+s: <empty>
+mathjax: <empty>
+number-sections: <empty>
+bibliography: refs.bib
+o: manuscript_test.pdf
