@@ -58,7 +58,10 @@
 \usepackage{color,dcolumn,graphicx,hyperref}
 \usepackage{natbib}
 \usepackage{footnote}
+\usepackage{threeparttable}
 \usepackage{scrextend}
+\usepackage{setspace}
+\usepackage[margin=1in]{geometry}
 
 % stuff for coloring rows in tables - BEGIN
 \usepackage{booktabs}% http://ctan.org/pkg/booktabs
@@ -101,7 +104,7 @@
             \arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%
 \newcommand{\bottomlinec}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
             \arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%
-% stuff for coloring rows in tables - BEGIN
+% stuff for coloring rows in tables - END
 
 \newcolumntype{L}{>{\arraybackslash}m{5cm}} % creates now column type to wrap text
 \newcolumntype{B}{>{\arraybackslash}m{3cm}} % creates now column type to wrap text
@@ -113,6 +116,8 @@
 }
 
 \begin{document}
+
+\setstretch{2}
 
 
 
@@ -127,44 +132,65 @@
 
 \maketitle
 
-\section{Abstract}
+\section*{Abstract}
 
-\section{Introduction}
+XXXX
 
-Altmetrics, or article level metrics, measure the impact of individual articles, or objects. This is in stark contrast to the impact factor, which is a proprietary summation of the impact of all articles in a journal. Altmetrics have many advantages over journal level metrics, including quantifying more than just citations, and providing metrics on a variety of impacts (e.g., discussed by the media (mentions in the news), discussed by the public (facebook likes, tweets), and importance to colleagues (citations)). 
+\section*{Introduction}
 
-Altmetrics can be consumed in a variety of contexts: as static text, images, or graphs alongside a pdf or html page, as a javascript widget in an html page, and more. A use case that will, and should, be increasingly common is using scripting languages (e.g., Python, Ruby, R) to consume altmetrics on a machine locally, often for purposes of research on altmetrics themselves. Consuming altmetrics from this perspective is somewhat different than the typical use case where a user looks at altmetrics in a web browser. 
+Altmetrics, or article level metrics, measure the impact of individual articles, or objects, usually at the object level, or the author level. This is in stark contrast to the impact factor, which is a proprietary summation of the impact of all articles in a journal (owned and calculated by Thomson Reuters©). Altmetrics have many advantages over journal level metrics, including quantifying more than just citations, and provide metrics on a variety of impacts (e.g., discussed by the media (mentions in the news), discussed by the public (facebook likes, tweets), and importance to colleagues (citations)). 
+
+Altmetrics can be consumed in a variety of contexts: as static text, images, or graphs alongside a pdf or website, as a javascript widget in a website and more. A use case that will, and should, be increasingly common is using scripting languages (e.g., Python, Ruby, R) to consume altmetrics on a computer locally (rather than in a browser), often for purposes of research on altmetrics themselves. Consuming altmetrics from this perspective is somewhat different than the typical use case where a user looks at altmetrics in a web browser. 
 
 This paper takes a look at the perspective of developing and using scripting interfaces to altmetrics. From this perspective, there are a number of considerations: data stanardization and consistency; API speed; authentication; and data provenance. First, I'll go over the current altmetrics data providers. 
 
-\section{Altmetrics data providers}
+\section*{Altmetrics data providers}
 
-There are many publishers that are now presenting altmetrics alongside their papers on their websites. However, these publishers do not yet provide public facing APIs (Application Programming Interface) at the time of writing. There are four entities that aggreagate and provide altmetrics data, one of which (Plum Analytics) does not have an open public facing API, so will not be discussed further.  Three altmetrics providers, PLoS, ImpactStory, and Altmetric, are similar in some ways, and different in others. PLoS and ImpactStory have open APIs, while Altmetrics API is limited to X API requests per X. PLoS provides data in JSON (JavaScript Object Notation) and XML (Extensible Metadata Language), ImpactStory in JSON only, and Altmetric in JSON and JSONP. In terms of granularity, PLoS provides much more granular data than the others, with daily, monthly and yearly totals; ImpactStory provides only total values; and Altmetric provides total values, plus incremental summaries of their proprietary Altmetric score. PLoS is a publisher, while the mission of the other two is to collect and provide altmetrics data. PLoS and ImpactStory are non-profit, while Altmetric is for-profit.
+There are many publishers that are now presenting altmetrics alongside their papers on their websites. However, these publishers do not yet provide public facing APIs (Application Programming Interface) at the time of writing. There are four major entities that aggreagate and provide altmetrics data: PLoS, ImpactStory, and Altmetric, and Plum Analytics (see Table 1 for details). Plum Analytics does not have an open public facing interface or API, so will not be discussed further. There are a few other smaller scale altmetrics providers, such as CiteIn (\url{http://citedin.org/}). PLoS and ImpactStory have open APIs, while Altmetrics API limits API requests by hour and day, and by payed vs. non-payed accounts. PLoS provides data in JSON (JavaScript Object Notation) and XML (Extensible Metadata Language), ImpactStory in JSON only, and Altmetric in JSON and JSONP. In terms of granularity, PLoS provides much more granular data than the others, with daily, monthly and yearly totals; ImpactStory provides only total values; and Altmetric provides total values, plus incremental summaries of their proprietary Altmetric score. PLoS is a publisher, while the mission of the other two is to collect and provide altmetrics data. PLoS and ImpactStory are non-profit, while Altmetric is for-profit.
 
-The three providers overlap in some sources of altmetrics they gather, but not all. The fact that there is some complementarity in sources opens the possibility that metrics can be combined from across the different providers. For those that are compelementary, this should be relatively easy. However, when they share data sources, data may not be consistent between providers for the same data source (see _Data standardization and consistency_ below).
+The three providers overlap in some sources of altmetrics they gather, but not all. The fact that there is some complementarity in sources opens the possibility that metrics can be combined from across the different providers. For those that are compelementary, this should be relatively easy. However, when they share data sources, data may not be consistent between providers for the same data source (see \emph{Data standardization and consistency} below).
+
+One of the important aspects of altmetrics is that most of the data collected by altmetrics aggregators like ImpactStory is that they aren't creating the data themselves, but rather are collecting the data from other sources that have their own licences. Thus, data licenses for PLoS, ImpactStory, and Altmetric are generally restricted to match those of the original data provider (e.g., Twitter). 
+
+Note that in discussing the three providers, we are only aware of the details of each provider that are open to the public. For example, Altmetric provides some services to paying customers, which we don't cover here. 
 
 
 \begin{table}[!ht]
-\caption{Details on the current altmetrics providers}\label{tab:a} % title of Table
-\begin{tabular}{|l|l|l|l|}
-\hline
-Variable & PLoS & ImpactStory & Altmetric  \\
-\hline
-Open API? & Yes & Yes & Limited \\
-Data format & JSON,XML & JSON & JSON,JSONP \\
-Granularity\footnote{D: day; M: month; Y: year; T: total; I: incremental summaries} & D,M,Y & T & I \\
-Authentication & None & API key & API key \\
-Business type & Publisher & Altmetrics provider & Altmetrics provider \\
-Business model & Non-profit & Non-profit & For-profit \\
-\hline
-\end{tabular}
+    \begin{threeparttable}[b]
+    \caption{Details on the current altmetrics providers}\label{tab:a} % title of Table
+        \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            Variable & PLoS & ImpactStory & Altmetric & Plum Analytics \\
+            \hline
+            Open API? & Yes & Yes & Limited\tnote{d} & No \\
+            Data format & JSON,XML & JSON & JSON,JSONP & Unknown \\
+            Granularity\tnote{b} & D,M,Y & T & I & Unknown \\
+            API Authentication & None & API key & API key & Unknown \\
+            Business type & Publisher & Altmetrics provider & Altmetrics provider & Altmetrics provider \\
+            Business model & Non-profit & Non-profit & For-profit & For-profit \\
+            Rate limiting & Not enforced & Not enforced\tnote{c} & 1 call/sec.\tnote{d} & Unknown \\
+            Products covered & Articles & Many\tnote{e} & Articles & Many\tnote{f} \\
+            \hline
+        \end{tabular}
+        \begin{tablenotes}
+            \item[a] Payed accounts with perks
+            \item[b] D: day; M: month; Y: year; T: total; I: incremental summaries
+            \item[c] Note: They recommend delaying a few seconds between requests
+            \item[d] Also hourly and daily limits enforced; using API key increases limits
+            \item[e] articles, code, software, presentations, datasets
+            \item[f] articles, code, software, presentations, datasets, books, theses, etc. (see \url{http://www.plumanalytics.com/metrics.html} for a full list)
+        \end{tablenotes}
+    \end{threeparttable}
 \end{table}
 
-\section{Data standardization and consistency}
+\section*{Data standardization and consistency}
 
 Now that there are multiple providers for altmetrics data, data consistency is something to keep in mind. For example, PLoS, ImpactStory and Altmetric do collect altmetrics from some of the same data sources. Are the numbers they present to users the same for the same paper, or are they different due to different collection dates or methods of collection? Each of the three providers of course has the right to collect metrics as needed for their purposes, 
 
-I retrieved a set of 100 more or less random DOIs for full articles from PLoS journals - this way all three providers would have data on the papers. I collected metrics from each of the three providers for each of the 100 DOIs. 
+I retrieved a set of 500 more or less random DOIs for full articles from PLoS journals - this way all three providers would have data on the papers. I collected metrics from each of the three providers for each of the 500 DOIs. TALK ABOUT RESULTS... A subset of 20 of the 500 DOIs are shown in Figure 1, showing the value of each altmetric from each of the altmetrics providers for each of the 20 DOIs. Note that  in some cases there is very close overlap in values for the same altmetric on the same DOI across providers, but in some cases the values are very different. 
+
+
+
 
 
 
@@ -173,43 +199,53 @@ I retrieved a set of 100 more or less random DOIs for full articles from PLoS jo
 
 As discussed above, when similar data sources are collected by altmetrics providers, ideally, there would be a way to go between, for example, data from Twitter for PLoS, ImpactStory, and Altmetric. Each of the three providers of course has the right to collect metrics as needed for their purposes, but as altmetrics consumers, we should be able to compare data from the same source across providers. In Appendix Table A1, I provide a table to crosswalk metrics for the same data source among providers.
 
-\section{API Speed}
-
-The speed of API calls is not likely something most users for altmetrics providers will notice. However, developers of applications on top of altmetrics providers will definitely notice differences in API speed. A quick analysis of the speed of API requests shows that PLoS is about twice as fast as Altmetric, and ImpactStory is many times slower than both PLoS and Altmetric. This test was done using a MacBook Pro, mid-2010, 4 core machine, 2.5 GHz Intel processor. 
-
-
-
-
-Another aspect of API speed is the ability to pass in many queries simultaneously. The PLoS API allows you to pass in many DOIs or other identifiers to retrieve altmetrics, whereas the Altmetric and ImpactStory APIs only allow one identifier per call. Allowing many identifiers per call can dramatically speed up altmetrics harvesting. Another option to speed up calls is parallelizing calls across cores of a machine or many machines.  However, this will cause many calls in a very short time period, likely violating the rules/guidelines issued by the providers.
-
-
-\section{Authentication}
+\section*{Authentication}
 
 There are a variety of possible authentication methods, some of which include: a) no authentication, b) username and password pair, c) API key, and d) OAuth (including OAuth1 and OAuth2) (Table 1). These different options make sense in different use cases. The first, no authentication, used by PLoS, makes sense when an API first comes out and testers are needed to get feedback on the API. A benefit of an API with no authentication is the barrier to entry is lower. That is, if you don't have to ask a user to register to get an API key they are more likely to use the API. The second and third options, username/password pair and API key are relatively similar; API keys are used by both ImpactStory and Altmetric (Table 1). The last option, OAuth, is not used by any of the altmetrics providers. This authentication method is however used by many API providers. From the viewpoint of a consumer in a desktop scripting language, OAuth can be painful. What works better for scripting languages are the first three options.  
 
-\section{Data provenance}
+\section*{Data provenance}
 
-Data for the same altmetrics resource could be calculated in different ways and collected at different times for the same object. The three providers already provide the date the metrics were updated. However, there is no information available, via their APIs at least, regarding how data were collected, and what, if any, calculations were done on the data before providing the data. The for-profit providers, Altmetric and Plum Analytics, have no obligation to share these, but the altmetrics community overall would benefit from transparency in how data are collected. 
+Data for the same altmetrics resource could be calculated in different ways and collected at different times for the same object. The three providers already provide the date the metrics were updated. However, there is little information available, via their APIs at least, regarding how data were collected, and what, if any, calculations were done on the data before providing the data. The for-profit providers, Altmetric and Plum Analytics, especially have no obligation to share these, but the altmetrics community overall would benefit from transparency in how data are collected. 
 
-\section{Conclusion}
+A good step in the right direction is that ImpactStory provides a field named \emph{provenance\_url} with each metric data source. For example, for a recent paper \cite{piwowar2007}, a GET call to the ImpactStory API returns many metrics, one of which is 10 bookmarks on Delicious. Importantly, they also return the field \emph{provenance\_url}, in this case \url{http://www.delicious.com/url/9df9c6e819aa21a0e81ff8c6f4a52029}, which takes you directly to the human readble page on Delicous from where the data was collected. This is important for researchers as ideally all of our research is replicable. A nice bit about digital data such as altmetrics is that we can trace back final altmetrics from providers such as ImpactStory to their original source.
+
+The PLoS ALM API provides something less obvious with respect to provenance, a field called \emph{events\_url}, which for the same paper above \cite{piwowar2007} returns 82 bookmarks on Citeulike, and the human readable link to where the data was collected \url{http://www.citeulike.org/doi/10.1371/journal.pone.0000308}. 
+
+What is ideal with respect to data provenance? Is the link to where the original data was collected enough? Probably so, if no calculations were done on the original data before reaching users. However, some of the providers do give numbers which have been calculated. For example, ImpactStory puts some metrics into context by calculating some percentage relative to a reference set. Ideally, how this is done should be very clear, and replicable. 
+
+%% -mention Altmetric history data && PLoS's history data...
+
+\section*{Putting altmetrics in context, or Normalization}
+
+Raw altmetrics data can be number of tweets, or number of html views on a publishers website. What do these numbers mean? How does the paper or dataset I care about compare to others? ImpactStory gives context to their scores by classifying scores along two dimensions: audience (scholars or public) and type of engagement (view, discuss, save, cite, recommend). Users can then determine whether a product (paper, dataset, etc.) was highly viewed, discussed, saved, cited, or recommended, and by scientists, or by the public. This abstracts away many details; however, users can drill down to the underlying data via their API and web interface.  Altmetric has a different approach. They provide context for only one metric, the altmetric score. This is a single aggregate metric, the calculation of which is not known. They do provide context for the altmetric score, including how it compares to a) all articles in the same journal, b) all articles in the same journal published within three weeks of the article, c) all articles in the Almetric database, and d) all articles in the Almetric database published within three weeks of the article. No context is given though for individual altmetrics (e.g., tweets). 
+
+Future work should consider further dimensions of context. For example, XXXX
+
+\section*{Relavance of altmetrics}
+
+The internet has facilitated the existence of altmetrics, as measures of impact are all around us, and many are now machine readable. However, which altmetrics are relavant? More importantly, which altmetrics are relavant to the community you care about? XXXX. [NOT SURE IT MAKES SENSE TO KEEP THIS SECTION???]
+
+\section*{Conclusion}
 
 XXXXXX
 
-\section{Acknowledgments}
+\section*{Acknowledgments}
 
-I thank Martin Fenner for inviting me to write a paper in this special issue, and for feedback from X, Y, and Z on earlier versions of this manuscript.
-
+I thank Martin Fenner for inviting me to write a paper in this special issue, and for feedback from Carl Boettiger, Karthik Ram, and X on earlier versions of this manuscript.
+  
+\section{References}
 \bibliography{refs}
 
-\section{Appendix A. Crosswalk table among providers.}
+\section*{Appendix A. Crosswalk table among providers.}
 
 The following Table A1 provides a crosswalk between altmetrics data collected by the three data providers. Note that these variables relate to one another across providers, but the data may be collected differently, and so for example, altmetrics collected for Twitter may differ between PLoS, ImpactStory and Altmetric.
 
 \begin{table}[!ht]
+\begin{threeparttable}[b]
 \caption{Data sources used in taxize, tasks available, and links to them}
 \begin{tabular}{|B|B|L|C|}
 \hline
-\headcol Data source & PLoS\footnote{These are the exact names for each data source in the PLos ALM API. For example: \url{http://alm.plos.org/api/v3/articles?ids=10.1371/journal.pone.0018657&source=twitter}} & ImpactStory\footnote{You can not request a specific source from the ImpactStory API, so these are the names of the fields in the returned json. For example, see the json from this call: \url{http://api.impactstory.org/v1/item/doi/10.1371/journal.pone.0018657?key=YOURAPIKEY}} & Altmetric\footnote{You can not request a specific source from the Altmetric API, so these are the names of the fields in the returned json. For example, see the json from this call: \url{http://api.altmetric.com/v1/doi/10.1371/journal.pbio.0018657?key=YOURAPIKEY}} \\
+\headcol Data source & PLoS\tnote{a} & ImpactStory\tnote{b} & Altmetric\tnote{c} \\
 \hline
 Biod & biod & No & No \\
 \rowcol Connotea & connotea & No & No \\
@@ -228,12 +264,12 @@ Google+ & No & No & cited\_by\_gplus\_count \\
 News articles & No & No & Yes \\
 \rowcol Reddit & No & No & cited\_by\_rdts\_count \\
 Citeulike & citeulike & citeulike:bookmarks & No \\
-\rowcol Crossref & crossref & plosalm:crossref\footnote{\label{a1}Collected from the PLoS ALM API.} & No \\
+\rowcol Crossref & crossref & plosalm:crossref\tnote{d} & No \\
 PLoS ALM & counter(pdf\_views html\_views xml\_views) & plosalm(html\_views, pdf\_views) & No \\
-\rowcol PMC & pmc & pmc(suppdata\_views figure\_views unique\_ip\_views pdf\_downloads abstract\_views fulltext\_views); (plosalm:pmc\_abstract pmc\_supp-data pmc\_figure pmc\_full-text pmc\_pdf pmc\_unique-ip)\footref{a1} & No \\
-PubMed & pubmed & pubmed:pmc\_citations\_reviews f1000 pmc\_citations\_editorials pmc\_citations (plosalm:pubmed\_central)\footref{a1} & No \\
+\rowcol PMC & pmc & pmc(suppdata\_views figure\_views unique\_ip\_views pdf\_downloads abstract\_views fulltext\_views); (plosalm:pmc\_abstract pmc\_supp-data pmc\_figure pmc\_full-text pmc\_pdf pmc\_unique-ip)\tnote{d} & No \\
+PubMed & pubmed & pubmed:pmc\_citations\_reviews f1000 pmc\_citations\_editorials pmc\_citations (plosalm:pubmed\_central)\tnote{d} & No \\
 \rowcol Scienceseeker & scienceseeker & scienceseeker:blog\_posts & No \\
-Scopus citations & scopus & scopus:citations; (plosalm:scopus)\footref{a1} & No \\
+Scopus citations & scopus & scopus:citations; (plosalm:scopus)\tnote{d} & No \\
 \rowcol Wikipedia & wikipedia & wikipedia:mentions & No \\
 Delicious & No & delicious:bookmarks & cited\_by\_delicious\_count \\
 \rowcol Facebook & facebook & facebook:shares clicks comments likes & cited\_by\_fbwalls\_count \\
@@ -241,6 +277,13 @@ Mendeley & mendeley & mendeley:discipline readers groups country career\_stage &
 \rowcol Twitter & twitter & topsy:influential\_tweets tweets & cited\_by\_tweeters\_count \\
 \hline
 \end{tabular}
+\begin{tablenotes}
+    \item[a] These are the exact names for each data source in the PLos ALM API. For example: \url{http://alm.plos.org/api/v3/articles?ids=10.1371/journal.pone.0018657&source=twitter}
+    \item[b] You can not request a specific source from the ImpactStory API, so these are the names of the fields in the returned json. For example, see the json from this call: \url{http://api.impactstory.org/v1/item/doi/10.1371/journal.pone.0018657?key=YOURAPIKEY}
+    \item[c] You can not request a specific source from the Altmetric API, so these are the names of the fields in the returned json. For example, see the json from this call: \url{http://api.altmetric.com/v1/doi/10.1371/journal.pbio.0018657?key=YOURAPIKEY}
+    \item[d] Collected from the PLoS ALM API.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}
 
 

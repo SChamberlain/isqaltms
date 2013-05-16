@@ -7,5 +7,6 @@ This manuscript is written from the viewpoint of consuming altmetrics APIs, vs. 
 
 To compile, from the command line:
 
++ edit 'isq_ms.Rnw'
 + go to folder: `cd isqaltms`
-+ run make all: `make`
++ run make all: `make tex`

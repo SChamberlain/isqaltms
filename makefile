@@ -16,4 +16,4 @@ fromrmd: manuscript_rmd2.md
 
 tex: isq_ms.Rnw
 	Rscript -e 'library(knitr); setwd("~/github/sac/isqaltms/"); knit("isq_ms.Rnw")'
-	pandoc -H margins.sty -V fontsize=10pt --bibliography refs.bib isq_ms.tex -o isq_ms.pdf
+	pandoc -H margins.sty -V fontsize=11pt --bibliography refs.bib isq_ms.tex -o isq_ms.pdf
