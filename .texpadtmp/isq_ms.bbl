@@ -6,7 +6,7 @@
 %Control: page (1) range
 %Control: year (0) verbatim
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{1}%
+\begin{thebibliography}{2}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -61,4 +61,14 @@
   rate},}\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {PLoS
   One}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages} {e308} (\bibinfo
   {year} {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Piwowar}\ and\ \citenamefont
+  {Neylon}(2011)}]{piwowar2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Heather~A.}\
+  \bibnamefont {Piwowar}}\ and\ \bibinfo {author} {\bibfnamefont {Cameron}\
+  \bibnamefont {Neylon}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Who
+  shares? who doesn't? factors associated with openly archiving raw research
+  data},}\ }\href {\doibase 10.1371/journal.pone.0018657} {\bibfield  {journal}
+  {\bibinfo  {journal} {Plos One}\ }\textbf {\bibinfo {volume} {6}} (\bibinfo
+  {year} {2011}),\ 10.1371/journal.pone.0018657}\BibitemShut {NoStop}%
 \end{thebibliography}%
