@@ -93,7 +93,7 @@ This paper discusses altmetrics from the perspective of developing and using scr
 
 \section*{Altmetrics data providers}
 
-There are many publishers that are now presenting altmetrics alongside their papers on their websites. However, these publishers do not yet provide public facing APIs (Application Programming Interface) at the time of writing. There are four major entities that aggreagate and provide altmetrics data: PLoS, ImpactStory, and Altmetric, and Plum Analytics (see Table 1 for details). Plum Analytics does not have an open public facing interface or API, so will not be discussed further. There are a few other smaller scale altmetrics providers, such as CiteIn (\url{http://citedin.org/}) and ScienceCard (\url{http://sciencecard.org/}), but they will not be discussed futher here since they are relatively smaller. PLoS and ImpactStory have open APIs, while Altmetrics API limits API requests by hour and day, and by payed vs. non-payed accounts. PLoS provides data in JSON (JavaScript Object Notation) and XML (Extensible Metadata Language), ImpactStory in JSON only, and Altmetric in JSON and JSONP. In terms of granularity, PLoS provides much more granular data than the others, with daily, monthly and yearly totals; ImpactStory provides only total values; and Altmetric provides total values, plus incremental summaries of their proprietary Altmetric score. PLoS is a publisher, while the mission of the other two is to collect and provide altmetrics data. PLoS and ImpactStory are non-profit, while Altmetric is for-profit.
+There are many publishers now presenting altmetrics alongside papers on their websites. However, these publishers do not yet provide public facing APIs (Application Programming Interface) for altmetrics data at the time of writing. There are four major entities that aggreagate and provide altmetrics data: PLoS, ImpactStory, and Altmetric, and Plum Analytics (see Table 1 for details). Plum Analytics does not have an open public facing interface or API, so will not be discussed further. There are a few other smaller scale altmetrics providers, such as CiteIn (\url{http://citedin.org/}) and ScienceCard (\url{http://sciencecard.org/}), but they will not be discussed futher here since they are relatively small. PLoS and ImpactStory have open APIs, while Altmetrics API limits API requests by hour and day, and by payed vs. non-payed accounts. PLoS provides data in JSON (JavaScript Object Notation) and XML (Extensible Metadata Language), ImpactStory in JSON only, and Altmetric in JSON and JSONP. In terms of granularity, PLoS provides much more granular data than the others, with daily, monthly and yearly totals; ImpactStory provides only total values; and Altmetric provides total values, plus incremental summaries of their proprietary Altmetric score. PLoS is a publisher, while the mission of the other two is to collect and provide altmetrics data. PLoS and ImpactStory are non-profit, while Altmetric is for-profit.
 
 The three providers overlap in some sources of altmetrics they gather, but not all (see Appendix Table A1). The fact that there is some complementarity in sources opens the possibility that different metrics can be combined from across the different providers to get more a complete set of altmetrics. For those that are compelementary, this should be relatively easy, and we don't have to worry about data consistency. However, when they share data sources, data may not be consistent between providers for the same data source (see \emph{Data standardization and consistency} below).
 
@@ -173,7 +173,10 @@ parse_is <- function(input){
 }
 
 # Define a function to collect altmetrics from three providers
-compare_altmet_prov <- function(doi, isaddifnot=FALSE, fileout=NULL){
+compare_altmet_prov <- function(doi, isaddifnot=FALSE, fileout=NULL, sleep=0){
+  Sys.sleep(sleep)
+  Sys.time()
+  
   # plos
   plos_dat <- alm(doi=doi, total_details=TRUE)
   plos_dat2 <- plos_dat[,c("citeulike_total","connotea_total","scopus_total",
@@ -197,7 +200,7 @@ compare_altmet_prov <- function(doi, isaddifnot=FALSE, fileout=NULL){
                        "mendeley","connotea","citeulike","readers_count","date_modified")
   # impactstory
 #   is_dat <- metrics(doi)
-  is_dat <- metrics(doi, addifnot=isaddifnot)
+  is_dat <- metrics(doi, addifnot=isaddifnot, sleep=1)
   is_dat <- parse_is(is_dat)
   is_dat$date_modified <- as.Date(is_dat$date_modified)
   names(is_dat) <- c("delicious","mendeley","ploshtml","plosviews","scopus","pmc",
@@ -217,16 +220,26 @@ compare_altmet_prov <- function(doi, isaddifnot=FALSE, fileout=NULL){
 # Safe version in case of errors
 compare_altmet_prov_safe <- plyr::failwith(NULL,compare_altmet_prov)
 
-# Search for and get DOIs for 500 papers
-res <- searchplos(terms="*:*", fields='id', toquery=list('publication_date:[2011-06-30T00:00:00Z TO 2013-01-01T23:59:59Z] ', 'doc_type:full'), start=0, limit=900)
+# # Search for and get DOIs for 500 papers
+# res <- searchplos(terms="*:*", fields='id', toquery=list('publication_date:[2011-06-30T00:00:00Z TO 2013-01-01T23:59:59Z] ', 'doc_type:full'), start=0, limit=900) 
+# write.csv(data.frame(doi = res[1:500,]), "~/github/sac/isqaltms/dois.csv", row.names=FALSE)
+
+# res <- read.csv("~/github/sac/isqaltms/dois.csv")
 
 # # Get the metrics, and make a data.frame
-mydf <- data.frame(NA,NA,999,999,999,999,999,999,999,999,"1970-01-01")
-names(mydf) <- c("provider","doi","citeulike","connotea","scopus","ploscounter","pmc","facebook","mendeley","twitter","date_modified")
-write.csv(mydf, "~/github/sac/isqaltms/alldatout_2.csv", row.names=FALSE)
+# mydf <- data.frame(NA,NA,999,999,999,999,999,999,999,999,"1970-01-01")
+# names(mydf) <- c("provider","doi","citeulike","connotea","scopus","ploscounter","pmc","facebook","mendeley","twitter","date_modified")
+# write.csv(mydf, "~/github/sac/isqaltms/alldatout_3.csv", row.names=FALSE)
 
-alldat <- l_ply(as.character(res[,1]), compare_altmet_prov_safe, isaddifnot=TRUE, fileout="~/github/sac/isqaltms/alldatout_2.csv", .progress="text")
+# alldat <- l_ply(as.character(res[,1])[133:900], compare_altmet_prov_safe, isaddifnot=TRUE, sleep=0, fileout="~/github/sac/isqaltms/alldatout_3.csv", .progress="text")
 @
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figure/dataconst_plot.pdf}
+  \caption{Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 308 DOIs from Altmetric, ImpactStory, and PLoS ALM. Values were log10 transformed to improve comprehension.} % caption line
+\end{figure}
+
 
 <<dataconst_plot, eval=FALSE, echo=FALSE, warning=FALSE, fig.cap="Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 308 DOIs from Altmetric, ImpactStory, and PLoS ALM. Values were log10 transformed to improve comprehension.">>=
 library(ggplot2, quietly=TRUE)
@@ -292,6 +305,12 @@ ggplot(na.omit(alldat_m), aes(x=doi, y=value, colour=provider)) +
                             nrow = 1, byrow = TRUE))
 @
 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figure/dataconst2.pdf}
+  \caption{A comparison of seven different altmetrics on a set of 20 DOIs from Altmetric, ImpactStory, and PLoS.} % caption line
+\end{figure}
+
 \subsection*{A crosswalk among providers}
 
 As discussed above, when similar data sources are collected by altmetrics providers, ideally, there would be a way to go between, for example, data from Twitter for PLoS, ImpactStory, and Altmetric. Each of the three providers of course has the right to collect metrics as needed for their purposes, but as altmetrics consumers, we should be able to compare data from the same source across providers. In Appendix Table A1, I provide a table to crosswalk metrics for the same data source among providers.
@@ -335,11 +354,11 @@ I thank Martin Fenner for inviting me to write a paper in this special issue, an
 
 \section*{Appendix A. Crosswalk table among providers.}
 
-The following Table A1 provides a crosswalk between altmetrics data collected by the three data providers. Note that these variables relate to one another across providers, but the data may be collected differently, and so for example, altmetrics collected for Twitter may differ between PLoS, ImpactStory and Altmetric. Where data sources are shared among at least two providers, I used only those fields that would give the same data if data were collected on the same date and all other things being equal. For example, PLoS ALM's field \emph{pubmed} is equivalent to ImpactStory's \emph{pubmed:pmc_citations} field.
+The following Table A1 provides a crosswalk between altmetrics data collected by the three data providers. Note that these variables relate to one another across providers, but the data may be collected differently, and so for example, altmetrics collected for Twitter may differ between PLoS, ImpactStory and Altmetric. Where data sources are shared among at least two providers, I used only those fields that would give the same data if data were collected on the same date and all other things being equal. For example, PLoS ALM's field \emph{pubmed} is equivalent to ImpactStory's \emph{pubmed:pmc\_citations} field.
 
 An example giving what results look like may be instructive. Here is an example of calling the API of each the three providers to combine data from different sources, for the DOI \emph{10.1371/journal.pone.0018657} \cite{piwowar2011} (Table A2). In this case, only altmetrics that are shared among the providers are presented. There are many metrics that have exactly the same values among providers, though there are differences, which could be explained by the difference in the date data was collected. For example, PLoS ALM gives 6719 for combined PLoS views, while ImpactStory gives 6497 views. This is likely explained by the fact that PLoS ALM data was last updated on May 16, 2013, while ImpactStory's data was last updated on April 24, 2013. There are some oddities, however. For example, Altmetric gives 68 tweets, while ImpactStory only gives 22 tweets. ImpactStory's data was updated more recently (April 24, 2013) than that of Altmetric (November 14, 2012), which suggests something different about the way tweets among the two providers are collected as updated date alone can not explain the difference. In fact, Table A1 shows that ImpactStory collects tweets from Topsy (\url{http://topsy.com/}), while Altmetric collects them in an undisclosed manner, which obviously leads to different results.
 
-<<callacrossprov, eval=FALSE, echo=FALSE, results='asis'>>=
+<<callacrossprov, eval=TRUE, echo=FALSE, results='asis'>>=
 library(xtable) 
 out <- compare_altmet_prov(doi='10.1371/journal.pone.0018657')
 out <- data.frame(provider=out[,1], numcolwise(round, digits=0)(out), date_updated=out[,11])

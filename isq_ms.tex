@@ -140,7 +140,7 @@ XXXX
 
 Altmetrics, or article level metrics, measure the impact of individual articles, or objects, usually at the object level, or the author level. This is in stark contrast to the impact factor, which is a proprietary summation of the impact of all articles in a journal (owned and calculated by Thomson Reuters ©). Altmetrics have many advantages over journal level metrics, including quantifying more than just citations, and provide metrics on a variety of impacts (e.g., discussed by the media (mentions in the news), discussed by the public (facebook likes, tweets), and importance to colleagues (citations)). 
 
-Altmetrics can be consumed in a variety of contexts: as static text, images, or graphs alongside a pdf or website, as a javascript widget in a website and more. A use case that will, and should, be increasingly common is using scripting languages (e.g., Python, Ruby, R) to consume altmetrics on a computer locally (rather than in a browser), often for purposes of research on altmetrics themselves. Consuming altmetrics from this perspective is somewhat different than the use case in which a user looks at altmetrics in a web browser. 
+Altmetrics can be consumed in a variety of contexts: as static text, images, or graphs alongside a pdf or website, as a javascript widget in a website and more. A use case that will, and should, be increasingly common is using scripting languages (e.g., Python, Ruby, R) to consume altmetrics on a computer locally (rather than in a browser), for a variety of use cases. Consuming altmetrics from this perspective is somewhat different than the use case in which a user looks at altmetrics in a web browser. Here are a number of use cases for conusming altmetrics programatically: 1) As altmetrics rise in use and popularity, research on altmetrics themselves will inevitably become a more common use case. XXXX. 2) Adding altmetrics to a CV. Piwowar and Priem \cite{piwowar2013power}. 3) XXXX. 
 
 This paper discusses altmetrics from the perspective of developing and using scripting interfaces for altmetrics. From this perspective, there are a number of considerations: where can you get altmetrics data; data standardization and consistency; putting altmetrics into context, or normalization; relavance of altmetrics; data provenance, and technical barriers.
 
@@ -195,6 +195,13 @@ I used a set of 600 DOIs for full articles from PLoS journals only - this way al
 
 
 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figure/dataconst_plot.pdf}
+  \caption{Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 308 DOIs from Altmetric, ImpactStory, and PLoS ALM. Values were log10 transformed to improve comprehension.} % caption line
+\end{figure}
+
+
 
 
 
@@ -202,6 +209,12 @@ That was a rough overview of hundreds of DOIs. What do the differences among pro
 
 
 
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figure/dataconst2.pdf}
+  \caption{A comparison of seven different altmetrics on a set of 20 DOIs from Altmetric, ImpactStory, and PLoS.} % caption line
+\end{figure}
 
 \subsection*{A crosswalk among providers}
 
@@ -246,9 +259,9 @@ I thank Martin Fenner for inviting me to write a paper in this special issue, an
 
 \section*{Appendix A. Crosswalk table among providers.}
 
-The following Table A1 provides a crosswalk between altmetrics data collected by the three data providers. Note that these variables relate to one another across providers, but the data may be collected differently, and so for example, altmetrics collected for Twitter may differ between PLoS, ImpactStory and Altmetric.
+The following Table A1 provides a crosswalk between altmetrics data collected by the three data providers. Note that these variables relate to one another across providers, but the data may be collected differently, and so for example, altmetrics collected for Twitter may differ between PLoS, ImpactStory and Altmetric. Where data sources are shared among at least two providers, I used only those fields that would give the same data if data were collected on the same date and all other things being equal. For example, PLoS ALM's field \emph{pubmed} is equivalent to ImpactStory's \emph{pubmed:pmc\_citations} field.
 
-Here is an example of calling the API of each the three providers to combine data from different sources, for the DOI \emph{10.1371/journal.pone.0018657} \cite{piwowar2011} (Table A2). In this case, only altmetrics that are shared among the providers are presented. There are many metrics that have exactly the same values among providers, though there are differences, which could be explained by the difference in the date data was collected. For example, PLoS ALM gives 6719 for combined PLoS views, while ImpactStory gives 6497 views. This is likely explained by the fact that PLoS ALM data was last updated on May 16, 2013, while ImpactStory's data was last updated on April 24, 2013. There are some oddities, however. For example, Altmetric gives 68 tweets, while ImpactStory only gives 22 tweets. ImpactStory's data was updated more recently (April 24, 2013) than that of Altmetric (November 14, 2012), which suggests something different about the way tweets among the two providers are collected as updated date alone can not explain the difference. In fact, Table A1 shows that ImpactStory collects tweets from Topsy (\url{http://topsy.com/}), while Altmetric collects them in an undisclosed manner, which obviously leads to different results.
+An example giving what results look like may be instructive. Here is an example of calling the API of each the three providers to combine data from different sources, for the DOI \emph{10.1371/journal.pone.0018657} \cite{piwowar2011} (Table A2). In this case, only altmetrics that are shared among the providers are presented. There are many metrics that have exactly the same values among providers, though there are differences, which could be explained by the difference in the date data was collected. For example, PLoS ALM gives 6719 for combined PLoS views, while ImpactStory gives 6497 views. This is likely explained by the fact that PLoS ALM data was last updated on May 16, 2013, while ImpactStory's data was last updated on April 24, 2013. There are some oddities, however. For example, Altmetric gives 68 tweets, while ImpactStory only gives 22 tweets. ImpactStory's data was updated more recently (April 24, 2013) than that of Altmetric (November 14, 2012), which suggests something different about the way tweets among the two providers are collected as updated date alone can not explain the difference. In fact, Table A1 shows that ImpactStory collects tweets from Topsy (\url{http://topsy.com/}), while Altmetric collects them in an undisclosed manner, which obviously leads to different results.
 
 
 

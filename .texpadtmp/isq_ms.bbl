@@ -6,7 +6,7 @@
 %Control: page (1) range
 %Control: year (0) verbatim
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{2}%
+\begin{thebibliography}{3}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -50,6 +50,16 @@
 \providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
 \let\auto@bib@innerbib\@empty
 %</preamble>
+\bibitem [{\citenamefont {Piwowar}\ and\ \citenamefont
+  {Priem}(2013)}]{piwowar2013power}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Heather}\ \bibnamefont
+  {Piwowar}}\ and\ \bibinfo {author} {\bibfnamefont {Jason}\ \bibnamefont
+  {Priem}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {The power of
+  altmetrics on a cv},}\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+  {journal} {Bulletin of the American Society for Information Science and
+  Technology}\ }\textbf {\bibinfo {volume} {39}},\ \bibinfo {pages} {10--13}
+  (\bibinfo {year} {2013})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Piwowar}\ \emph {et~al.}(2007)\citenamefont
   {Piwowar}, \citenamefont {Day},\ and\ \citenamefont {Fridsma}}]{piwowar2007}%
   \BibitemOpen
