@@ -6,7 +6,7 @@
 %Control: page (1) range
 %Control: year (0) verbatim
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{3}%
+\begin{thebibliography}{5}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -60,6 +60,16 @@
   {journal} {Bulletin of the American Society for Information Science and
   Technology}\ }\textbf {\bibinfo {volume} {39}},\ \bibinfo {pages} {10--13}
   (\bibinfo {year} {2013})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Piwowar}\ and\ \citenamefont
+  {Neylon}(2011)}]{piwowar2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Heather~A.}\
+  \bibnamefont {Piwowar}}\ and\ \bibinfo {author} {\bibfnamefont {Cameron}\
+  \bibnamefont {Neylon}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Who
+  shares? who doesn't? factors associated with openly archiving raw research
+  data},}\ }\href {\doibase 10.1371/journal.pone.0018657} {\bibfield  {journal}
+  {\bibinfo  {journal} {Plos One}\ }\textbf {\bibinfo {volume} {6}} (\bibinfo
+  {year} {2011}),\ 10.1371/journal.pone.0018657}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Piwowar}\ \emph {et~al.}(2007)\citenamefont
   {Piwowar}, \citenamefont {Day},\ and\ \citenamefont {Fridsma}}]{piwowar2007}%
   \BibitemOpen
@@ -71,14 +81,24 @@
   rate},}\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {PLoS
   One}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages} {e308} (\bibinfo
   {year} {2007})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Piwowar}\ and\ \citenamefont
-  {Neylon}(2011)}]{piwowar2011}%
+\bibitem [{\citenamefont {Rossner}\ \emph {et~al.}(2007)\citenamefont
+  {Rossner}, \citenamefont {Van~Epps},\ and\ \citenamefont
+  {Hill}}]{rossner2007show}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Heather~A.}\
-  \bibnamefont {Piwowar}}\ and\ \bibinfo {author} {\bibfnamefont {Cameron}\
-  \bibnamefont {Neylon}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Who
-  shares? who doesn't? factors associated with openly archiving raw research
-  data},}\ }\href {\doibase 10.1371/journal.pone.0018657} {\bibfield  {journal}
-  {\bibinfo  {journal} {Plos One}\ }\textbf {\bibinfo {volume} {6}} (\bibinfo
-  {year} {2011}),\ 10.1371/journal.pone.0018657}\BibitemShut {NoStop}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Mike}\ \bibnamefont
+  {Rossner}}, \bibinfo {author} {\bibfnamefont {Heather}\ \bibnamefont
+  {Van~Epps}}, \ and\ \bibinfo {author} {\bibfnamefont {Emma}\ \bibnamefont
+  {Hill}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Show me the
+  data},}\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {The
+  Journal of cell biology}\ }\textbf {\bibinfo {volume} {179}},\ \bibinfo
+  {pages} {1091--1092} (\bibinfo {year} {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Arnold}\ and\ \citenamefont
+  {Fowler}(2011)}]{arnold2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Douglas~N}\
+  \bibnamefont {Arnold}}\ and\ \bibinfo {author} {\bibfnamefont {Kristine~K}\
+  \bibnamefont {Fowler}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
+  {Nefarious numbers},}\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+  {journal} {Notices of the AMS}\ }\textbf {\bibinfo {volume} {58}},\ \bibinfo
+  {pages} {434--437} (\bibinfo {year} {2011})}\BibitemShut {NoStop}%
 \end{thebibliography}%
