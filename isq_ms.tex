@@ -146,7 +146,7 @@ This paper discusses altmetrics from the perspective of developing and using scr
 
 \section*{Altmetrics data providers}
 
-There are many publishers that are now presenting altmetrics alongside their papers on their websites. However, these publishers do not yet provide public facing APIs (Application Programming Interface) at the time of writing. There are four major entities that aggreagate and provide altmetrics data: PLoS, ImpactStory, and Altmetric, and Plum Analytics (see Table 1 for details). Plum Analytics does not have an open public facing interface or API, so will not be discussed further. There are a few other smaller scale altmetrics providers, such as CiteIn (\url{http://citedin.org/}) and ScienceCard (\url{http://sciencecard.org/}), but they will not be discussed futher here since they are relatively smaller. PLoS and ImpactStory have open APIs, while Altmetrics API limits API requests by hour and day, and by payed vs. non-payed accounts. PLoS provides data in JSON (JavaScript Object Notation) and XML (Extensible Metadata Language), ImpactStory in JSON only, and Altmetric in JSON and JSONP. In terms of granularity, PLoS provides much more granular data than the others, with daily, monthly and yearly totals; ImpactStory provides only total values; and Altmetric provides total values, plus incremental summaries of their proprietary Altmetric score. PLoS is a publisher, while the mission of the other two is to collect and provide altmetrics data. PLoS and ImpactStory are non-profit, while Altmetric is for-profit.
+There are many publishers now presenting altmetrics alongside papers on their websites. However, these publishers do not yet provide public facing APIs (Application Programming Interface) for altmetrics data at the time of writing. There are four major entities that aggreagate and provide altmetrics data: PLoS, ImpactStory, and Altmetric, and Plum Analytics (see Table 1 for details). Plum Analytics does not have an open public facing interface or API, so will not be discussed further. There are a few other smaller scale altmetrics providers, such as CiteIn (\url{http://citedin.org/}) and ScienceCard (\url{http://sciencecard.org/}), but they will not be discussed futher here since they are relatively small. PLoS and ImpactStory have open APIs, while Altmetrics API limits API requests by hour and day, and by payed vs. non-payed accounts. PLoS provides data in JSON (JavaScript Object Notation) and XML (Extensible Metadata Language), ImpactStory in JSON only, and Altmetric in JSON and JSONP. In terms of granularity, PLoS provides much more granular data than the others, with daily, monthly and yearly totals; ImpactStory provides only total values; and Altmetric provides total values, plus incremental summaries of their proprietary Altmetric score. PLoS is a publisher, while the mission of the other two is to collect and provide altmetrics data. PLoS and ImpactStory are non-profit, while Altmetric is for-profit.
 
 The three providers overlap in some sources of altmetrics they gather, but not all (see Appendix Table A1). The fact that there is some complementarity in sources opens the possibility that different metrics can be combined from across the different providers to get more a complete set of altmetrics. For those that are compelementary, this should be relatively easy, and we don't have to worry about data consistency. However, when they share data sources, data may not be consistent between providers for the same data source (see \emph{Data standardization and consistency} below).
 
@@ -179,8 +179,8 @@ Note that in discussing the three providers, we are only aware of the details of
             \item[d] Also hourly and daily limits enforced; using API key increases limits
             \item[e] articles, code, software, presentations, datasets
             \item[f] articles, code, software, presentations, datasets, books, theses, etc. (see \url{http://www.plumanalytics.com/metrics.html} for a full list)
-            \item[g] R (\url{https://github.com/ropensci/alm})
-            \item[h] R (\url{https://github.com/ropensci/rimpactstory}), Javascriopt (\url{https://github.com/highwire/opensource-js-ImpactStory})
+            \item[g] \url{https://github.com/ropensci/alm}
+            \item[h] R (\url{https://github.com/ropensci/rimpactstory}), Javascript (\url{https://github.com/highwire/opensource-js-ImpactStory})
             \item[i] R (\url{https://github.com/ropensci/rAltmetric}), Python (\url{https://github.com/lnielsen-cern/python-altmetric})
         \end{tablenotes}
     \end{threeparttable}
@@ -190,31 +190,71 @@ Note that in discussing the three providers, we are only aware of the details of
 
 Now that there are multiple providers for altmetrics data, data consistency is something to keep in mind. For example, PLoS, ImpactStory and Altmetric do collect altmetrics from some of the same data sources. Are the numbers they present to users the same for the same paper, or are they different due to different collection dates, data sources, or methods of collection? Each of the three providers of course has the right to collect metrics as needed for their purposes. However, as altmetrics consumers and researchers, we should have a clear understanding of the potential hazards when using altmetrics data for research or otherwise. 
 
-I used a set of 600 DOIs for full articles from PLoS journals only - this way all three providers would have data on the papers. I collected metrics from each of the three providers for each of the 600 DOIs. However, only a subset of DOIs had data from all three providers, so the final sample size was 308. For each DOI I removed any missing values, and calculated the maximum difference between values (i.e., providers) and plotted the distribution of these maximum difference values for seven altmetrics that were shared among the providers (Fig. 1). Figure 1 shows that, at least with respect to absolute numbers, PMC metrics are very different among providers, while PLoS views (relavant only to PLoS ALM and ImpactStory) are somewhat less variable among providers. Most of the altmetrics are not very different among providers, with most values at zero, or no difference among providers. 
+I used a set of 565 DOIs for full articles from PLoS journals only - this way all three providers would have data on the papers. I collected metrics from each of the three providers for each of the 565 DOIs. However, only a subset of DOIs had data from all three providers, so the final sample size was 308. For each DOI I removed any missing values, and calculated the maximum difference between values (i.e., providers) and plotted the distribution of these maximum difference values for seven altmetrics that were shared among the providers (Fig. 1). Figure 1 shows that, at least with respect to absolute numbers, PMC metrics are very different among providers, while PLoS views (relavant only to PLoS ALM and ImpactStory) are somewhat less variable among providers. Most of the altmetrics are not very different among providers, with most values at zero, or no difference among providers. 
 
 
 
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=0.7\textwidth]{figure/dataconst_plot.pdf}
-  \caption{Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 308 DOIs from Altmetric, ImpactStory, and PLoS ALM. Values were log10 transformed to improve comprehension.} % caption line
+% \begin{figure}[!ht]
+%   \centering
+%   \includegraphics[width=0.7\textwidth]{figure/dataconst_plot.pdf}
+%   \caption{Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 308 DOIs from Altmetric, ImpactStory, and PLoS ALM. Values were log10 transformed to improve comprehension.} % caption line
+% \end{figure}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}[]
+
+
+{\centering \includegraphics[width=.7\linewidth]{figure/dataconst_plot1} 
+
+}
+
+\caption[Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 565 DOIs from Altmetric, ImpactStory, and PLoS ALM]{Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 565 DOIs from Altmetric, ImpactStory, and PLoS ALM. Values were log10 transformed to improve visual comprehension.\label{fig:dataconst_plot1}}
 \end{figure}
 
 
+\end{knitrout}
 
 
+What explains the differences in numbers among providers for the same metrics on the same DOIs? Numbers could differ for a number of reasons. First, data could be collected from different middle-men. For example, Twitter data is notorious for not being persistent. Thus, you either have to query the Twitter firehose constantly and store data, or go through a company like Topsy to collect tweets. Whereas ImpactStory collects tweets from Topsy, PLoS ALM and Altmetric collect tweets in an undisclosed manner. Different middle-men sources could lead to different data. Second, data could be collected at different dates. This could easily result in different data even if data are collected from the same source. This is especially obvious as ImpactStory collects some metrics via the PLoS ALM API, so those metrics that ImpactStory has from the PLoS ALM API should be the same as those that PLoS has. Fortunately, date is supplied in the returned data for all providers. Thus, I examined whether or not date could explain differences in metrics from the different providers. Figure 2 shows that there are definitely some large differences in values that could be due differences in date the data was collected, but this is not always the case (i.e., there are a lot of large difference values with very small difference in dates). 
 
-That was a rough overview of hundreds of DOIs. What do the differences among providers look like in more detail? I used a set of 20 DOIs from the 308 above, to show the value of each altmetric from each of the altmetrics providers for each of the 20 DOIs. Note that in some cases there is very close overlap in values for the same altmetric on the same DOI across providers, but in some cases the values are very different. 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}[]
 
 
+{\centering \includegraphics[width=.7\linewidth]{figure/dataconst_plot2} 
 
+}
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=0.7\textwidth]{figure/dataconst2.pdf}
-  \caption{A comparison of seven different altmetrics on a set of 20 DOIs from Altmetric, ImpactStory, and PLoS.} % caption line
+\caption[Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 565 DOIs from Altmetric, ImpactStory, and PLoS ALM]{Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 565 DOIs from Altmetric, ImpactStory, and PLoS ALM. Values were log10 transformed to improve visual comprehension.\label{fig:dataconst_plot2}}
 \end{figure}
+
+
+\end{knitrout}
+
+
+That was a rough overview of hundreds of DOIs. What do the differences among providers look like in more detail? I used a set of 20 DOIs from the 565 above to show the value of each altmetric from each of the altmetrics providers for each of the 20 DOIs. Note that in some cases there is very close overlap in values for the same altmetric on the same DOI across providers, but in some cases the values are very different. 
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}[]
+
+
+{\centering \includegraphics[width=.7\linewidth]{figure/dataconst2} 
+
+}
+
+\caption[A comparison of seven different altmetrics on a set of 20 DOIs from Altmetric, ImpactStory, and PLoS]{A comparison of seven different altmetrics on a set of 20 DOIs from Altmetric, ImpactStory, and PLoS. This demonstrates how altmetrics can be very similar across providers for some DOIs, but very dissimilar for others.\label{fig:dataconst2}}
+\end{figure}
+
+
+\end{knitrout}
+
+
+% \begin{figure}[!ht]
+%   \centering
+%   \includegraphics[width=0.7\textwidth]{figure/dataconst2.pdf}
+%   \caption{A comparison of seven different altmetrics on a set of 20 DOIs from Altmetric, ImpactStory, and PLoS.} % caption line
+% \end{figure}
 
 \subsection*{A crosswalk among providers}
 
@@ -263,6 +303,21 @@ The following Table A1 provides a crosswalk between altmetrics data collected by
 
 An example giving what results look like may be instructive. Here is an example of calling the API of each the three providers to combine data from different sources, for the DOI \emph{10.1371/journal.pone.0018657} \cite{piwowar2011} (Table A2). In this case, only altmetrics that are shared among the providers are presented. There are many metrics that have exactly the same values among providers, though there are differences, which could be explained by the difference in the date data was collected. For example, PLoS ALM gives 6719 for combined PLoS views, while ImpactStory gives 6497 views. This is likely explained by the fact that PLoS ALM data was last updated on May 16, 2013, while ImpactStory's data was last updated on April 24, 2013. There are some oddities, however. For example, Altmetric gives 68 tweets, while ImpactStory only gives 22 tweets. ImpactStory's data was updated more recently (April 24, 2013) than that of Altmetric (November 14, 2012), which suggests something different about the way tweets among the two providers are collected as updated date alone can not explain the difference. In fact, Table A1 shows that ImpactStory collects tweets from Topsy (\url{http://topsy.com/}), while Altmetric collects them in an undisclosed manner, which obviously leads to different results.
 
+% latex table generated in R 2.15.3 by xtable 1.7-1 package
+% Mon May 20 17:04:47 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrrrrrl}
+  \hline
+provider & citeulike & scopus & ploscounter & pmc & facebook & mendeley & twitter & date\_modified \\ 
+  \hline
+plosalm & 17 & 13 & 6763 & 392 & 7 & 93 & 0 & 2013-05-20 \\ 
+  altmetric & 17 &  &  &  & 1 & 92 & 71 & 2013-05-20 \\ 
+  impactstory &  & 13 & 6497 & 380 &  & 91 & 22 & 2013-04-24 \\ 
+   \hline
+\end{tabular}
+\caption{Example of combining results across three data providers on one DOI. Note that dates that data were last modified are the same for PLoS ALM and Altmetric, but different for ImpactStory. Missing values represent data that is not given by that provider.} 
+\end{table}
 
 
 

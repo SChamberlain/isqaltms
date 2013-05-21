@@ -126,8 +126,8 @@ Note that in discussing the three providers, we are only aware of the details of
             \item[d] Also hourly and daily limits enforced; using API key increases limits
             \item[e] articles, code, software, presentations, datasets
             \item[f] articles, code, software, presentations, datasets, books, theses, etc. (see \url{http://www.plumanalytics.com/metrics.html} for a full list)
-            \item[g] R (\url{https://github.com/ropensci/alm})
-            \item[h] R (\url{https://github.com/ropensci/rimpactstory}), Javascriopt (\url{https://github.com/highwire/opensource-js-ImpactStory})
+            \item[g] \url{https://github.com/ropensci/alm}
+            \item[h] R (\url{https://github.com/ropensci/rimpactstory}), Javascript (\url{https://github.com/highwire/opensource-js-ImpactStory})
             \item[i] R (\url{https://github.com/ropensci/rAltmetric}), Python (\url{https://github.com/lnielsen-cern/python-altmetric})
         \end{tablenotes}
     \end{threeparttable}
@@ -137,9 +137,9 @@ Note that in discussing the three providers, we are only aware of the details of
 
 Now that there are multiple providers for altmetrics data, data consistency is something to keep in mind. For example, PLoS, ImpactStory and Altmetric do collect altmetrics from some of the same data sources. Are the numbers they present to users the same for the same paper, or are they different due to different collection dates, data sources, or methods of collection? Each of the three providers of course has the right to collect metrics as needed for their purposes. However, as altmetrics consumers and researchers, we should have a clear understanding of the potential hazards when using altmetrics data for research or otherwise. 
 
-I used a set of 600 DOIs for full articles from PLoS journals only - this way all three providers would have data on the papers. I collected metrics from each of the three providers for each of the 600 DOIs. However, only a subset of DOIs had data from all three providers, so the final sample size was 308. For each DOI I removed any missing values, and calculated the maximum difference between values (i.e., providers) and plotted the distribution of these maximum difference values for seven altmetrics that were shared among the providers (Fig. 1). Figure 1 shows that, at least with respect to absolute numbers, PMC metrics are very different among providers, while PLoS views (relavant only to PLoS ALM and ImpactStory) are somewhat less variable among providers. Most of the altmetrics are not very different among providers, with most values at zero, or no difference among providers. 
+I used a set of 565 DOIs for full articles from PLoS journals only - this way all three providers would have data on the papers. I collected metrics from each of the three providers for each of the 565 DOIs. However, only a subset of DOIs had data from all three providers, so the final sample size was 308. For each DOI I removed any missing values, and calculated the maximum difference between values (i.e., providers) and plotted the distribution of these maximum difference values for seven altmetrics that were shared among the providers (Fig. 1). Figure 1 shows that, at least with respect to absolute numbers, PMC metrics are very different among providers, while PLoS views (relavant only to PLoS ALM and ImpactStory) are somewhat less variable among providers. Most of the altmetrics are not very different among providers, with most values at zero, or no difference among providers. 
 
-<<dataconst_prep, eval=FALSE, echo=FALSE, warning=FALSE>>=
+<<dataconst_prep, eval=TRUE, echo=FALSE, warning=FALSE>>=
 suppressPackageStartupMessages(library(alm, quietly=TRUE))
 library(rImpactStory, quietly=TRUE)
 library(rAltmetric, quietly=TRUE); 
@@ -234,27 +234,33 @@ compare_altmet_prov_safe <- plyr::failwith(NULL,compare_altmet_prov)
 # alldat <- l_ply(as.character(res[,1])[133:900], compare_altmet_prov_safe, isaddifnot=TRUE, sleep=0, fileout="~/github/sac/isqaltms/alldatout_3.csv", .progress="text")
 @
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=0.7\textwidth]{figure/dataconst_plot.pdf}
-  \caption{Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 308 DOIs from Altmetric, ImpactStory, and PLoS ALM. Values were log10 transformed to improve comprehension.} % caption line
-\end{figure}
+% \begin{figure}[!ht]
+%   \centering
+%   \includegraphics[width=0.7\textwidth]{figure/dataconst_plot.pdf}
+%   \caption{Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 308 DOIs from Altmetric, ImpactStory, and PLoS ALM. Values were log10 transformed to improve comprehension.} % caption line
+% \end{figure}
 
-
-<<dataconst_plot, eval=FALSE, echo=FALSE, warning=FALSE, fig.cap="Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 308 DOIs from Altmetric, ImpactStory, and PLoS ALM. Values were log10 transformed to improve comprehension.">>=
+<<dataconst_plot1, eval=TRUE, echo=FALSE, warning=FALSE, fig.cap="Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 565 DOIs from Altmetric, ImpactStory, and PLoS ALM. Values were log10 transformed to improve visual comprehension.">>=
 library(ggplot2, quietly=TRUE)
 library(reshape2, quietly=TRUE)
+library(lubridate, quietly=TRUE)
 
-dat <- read.csv("~/github/sac/isqaltms/alldatout.csv")[-1,]
+dat <- read.csv("~/github/sac/isqaltms/alldatout_3.csv")[-1,]
 
 dat_split <- split(dat, f=dat$doi)
 dat_split <- compact(lapply(dat_split, function(x) {if(x$citeulike[2]==999){NULL} else(x) }))
 dat_split_df <- ldply(dat_split)[,-1]
 
 calcdiff <- function(x){max(na.omit(x))-min(na.omit(x))}
-dat_split_df_ <- ddply(dat_split_df, .(doi), numcolwise(calcdiff))
-dat_split_df_melt <- melt(dat_split_df_)
-dat_split_df_melt <- dat_split_df_melt[! dat_split_df_melt$variable %in% "connotea", ] # connotea isn't shared among the providers
+datediff <- function(x){
+  datesorted <- sort(x)
+  round(as.numeric(difftime(datesorted[3], datesorted[1])),0)
+}
+dat_split_df_1 <- ddply(dat_split_df, .(doi), numcolwise(calcdiff))
+dat_split_df_2 <- ddply(dat_split_df, .(doi), summarise, datediff = datediff(date_modified))
+dat_split_df_melt <- melt(dat_split_df_1)
+dat_split_df_ <- merge(dat_split_df_melt, dat_split_df_2, by="doi")
+dat_split_df_melt <- dat_split_df_[! dat_split_df_$variable %in% "connotea", ] # connotea isn't shared among the providers
 
 ggplot(dat_split_df_melt, aes(x=log10(value), fill=variable)) +
   theme_bw(base_size=14) +
@@ -267,26 +273,28 @@ ggplot(dat_split_df_melt, aes(x=log10(value), fill=variable)) +
         legend.position = "none")
 @
 
-That was a rough overview of hundreds of DOIs. What do the differences among providers look like in more detail? I used a set of 20 DOIs from the 308 above, to show the value of each altmetric from each of the altmetrics providers for each of the 20 DOIs. Note that in some cases there is very close overlap in values for the same altmetric on the same DOI across providers, but in some cases the values are very different. 
+What explains the differences in numbers among providers for the same metrics on the same DOIs? Numbers could differ for a number of reasons. First, data could be collected from different middle-men. For example, Twitter data is notorious for not being persistent. Thus, you either have to query the Twitter firehose constantly and store data, or go through a company like Topsy to collect tweets. Whereas ImpactStory collects tweets from Topsy, PLoS ALM and Altmetric collect tweets in an undisclosed manner. Different middle-men sources could lead to different data. Second, data could be collected at different dates. This could easily result in different data even if data are collected from the same source. This is especially obvious as ImpactStory collects some metrics via the PLoS ALM API, so those metrics that ImpactStory has from the PLoS ALM API should be the same as those that PLoS has. Fortunately, date is supplied in the returned data for all providers. Thus, I examined whether or not date could explain differences in metrics from the different providers. Figure 2 shows that there are definitely some large differences in values that could be due differences in date the data was collected, but this is not always the case (i.e., there are a lot of large difference values with very small difference in dates). 
 
-<<dataconst2, eval=FALSE, echo=FALSE, warning=FALSE, fig.cap="A comparison of seven different altmetrics on a set of 20 DOIs from Altmetric, ImpactStory, and PLoS.">>=
-# Make a vector of twenty DOIs of PLoS papers
-dois <- c('10.1371/journal.pone.0018657','10.1371/journal.pone.0058869',
-          '10.1371/journal.pone.0060278','10.1371/journal.pone.0060410',
-          '10.1371/journal.pone.0052988','10.1371/journal.pbio.1001536',
-          '10.1371/journal.pbio.1001537','10.1371/journal.pbio.1001127',
-          '10.1371/journal.pone.0034911','10.1371/journal.pgen.1002873',
-          '10.1371/journal.pone.0021416','10.1371/journal.pone.0026907',
-          '10.1371/journal.pone.0050634','10.1371/journal.pone.0001230',
-          '10.1371/journal.pone.0017114','10.1371/journal.pone.0045308',
-          '10.1371/journal.pone.0034916','10.1371/journal.pone.0045307',
-          '10.1371/journal.pone.0043446','10.1371/journal.pone.0024135')
+<<dataconst_plot2, eval=TRUE, echo=FALSE, warning=FALSE, fig.cap="Distribution of absolute differences in least and greatest value of each of seven different altmetrics on a set of 565 DOIs from Altmetric, ImpactStory, and PLoS ALM. Values were log10 transformed to improve visual comprehension.">>=
+ggplot(dat_split_df_melt, aes(x=datediff, y=log10(value+1), colour=variable)) +
+  theme_bw(base_size=14) +
+  geom_point(size=3, alpha=0.6) +
+  scale_colour_brewer("Altmetric", type="qual", palette=3) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = c(0.65, 0.9), 
+        panel.border = element_rect(size=1),
+        legend.key=element_blank(), 
+        panel.background=element_rect(colour="white")) +
+  guides(col=guide_legend(nrow=2, override.aes=list(size=4))) +
+  labs(x="Date difference (no. of days)", y="Value of difference between max and min")
+@
 
-# Get the metrics, and make a data.frame
-alldat <- ldply(dois, compare_altmet_prov_safe, isaddifnot=TRUE)
+That was a rough overview of hundreds of DOIs. What do the differences among providers look like in more detail? I used a set of 20 DOIs from the 565 above to show the value of each altmetric from each of the altmetrics providers for each of the 20 DOIs. Note that in some cases there is very close overlap in values for the same altmetric on the same DOI across providers, but in some cases the values are very different. 
 
+<<dataconst2, eval=TRUE, echo=FALSE, warning=FALSE, fig.cap="A comparison of seven different altmetrics on a set of 20 DOIs from Altmetric, ImpactStory, and PLoS. This demonstrates how altmetrics can be very similar across providers for some DOIs, but very dissimilar for others.">>=
 # Melt the data.frame 
-alldat_m <- melt(alldat, id.vars=c(1,2,11))
+alldat_m <- melt(dat_split_df[1:60,], id.vars=c(1,2,11))
 
 # Remove connotea as it was removed in above chunk
 alldat_m <- alldat_m[!alldat_m$variable %in% "connotea",]
@@ -300,16 +308,18 @@ ggplot(na.omit(alldat_m), aes(x=doi, y=value, colour=provider)) +
   theme(axis.text.x=element_blank(),
         strip.text.y=element_text(angle = 0),
         legend.position="top", 
-        legend.key = element_blank()) +
+        legend.key = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()) +
   guides(col = guide_legend(title="", override.aes=list(size=4), 
                             nrow = 1, byrow = TRUE))
 @
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=0.7\textwidth]{figure/dataconst2.pdf}
-  \caption{A comparison of seven different altmetrics on a set of 20 DOIs from Altmetric, ImpactStory, and PLoS.} % caption line
-\end{figure}
+% \begin{figure}[!ht]
+%   \centering
+%   \includegraphics[width=0.7\textwidth]{figure/dataconst2.pdf}
+%   \caption{A comparison of seven different altmetrics on a set of 20 DOIs from Altmetric, ImpactStory, and PLoS.} % caption line
+% \end{figure}
 
 \subsection*{A crosswalk among providers}
 
@@ -359,10 +369,11 @@ The following Table A1 provides a crosswalk between altmetrics data collected by
 An example giving what results look like may be instructive. Here is an example of calling the API of each the three providers to combine data from different sources, for the DOI \emph{10.1371/journal.pone.0018657} \cite{piwowar2011} (Table A2). In this case, only altmetrics that are shared among the providers are presented. There are many metrics that have exactly the same values among providers, though there are differences, which could be explained by the difference in the date data was collected. For example, PLoS ALM gives 6719 for combined PLoS views, while ImpactStory gives 6497 views. This is likely explained by the fact that PLoS ALM data was last updated on May 16, 2013, while ImpactStory's data was last updated on April 24, 2013. There are some oddities, however. For example, Altmetric gives 68 tweets, while ImpactStory only gives 22 tweets. ImpactStory's data was updated more recently (April 24, 2013) than that of Altmetric (November 14, 2012), which suggests something different about the way tweets among the two providers are collected as updated date alone can not explain the difference. In fact, Table A1 shows that ImpactStory collects tweets from Topsy (\url{http://topsy.com/}), while Altmetric collects them in an undisclosed manner, which obviously leads to different results.
 
 <<callacrossprov, eval=TRUE, echo=FALSE, results='asis'>>=
-library(xtable) 
+library(xtable, quietly=TRUE) 
 out <- compare_altmet_prov(doi='10.1371/journal.pone.0018657')
-out <- data.frame(provider=out[,1], numcolwise(round, digits=0)(out), date_updated=out[,11])
-xtable(out, caption="Example of combining results across three data providers.")
+out$date_modified <- as.character(out$date_modified)
+mytable <- xtable(out[,-c(2,4)], caption="Example of combining results across three data providers on one DOI. Note that dates that data were last modified are the same for PLoS ALM and Altmetric, but different for ImpactStory. Missing values represent data that is not given by that provider.", digits=0)
+print(mytable, include.rownames = FALSE)
 @
 
 \begin{table}[!ht]
