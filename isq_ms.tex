@@ -109,11 +109,18 @@
 \newcolumntype{L}{>{\arraybackslash}m{5cm}} % creates now column type to wrap text
 \newcolumntype{B}{>{\arraybackslash}m{3cm}} % creates now column type to wrap text
 \newcolumntype{C}{>{\arraybackslash}m{3.5cm}} % creates now column type to wrap text
+\newcolumntype{D}{>{\arraybackslash}m{2.5cm}} % creates now column type to wrap text
 
 \hypersetup
 {
     colorlinks = true, linkcolor = blue, citecolor = blue, urlcolor = blue,
 }
+
+\newcommand{\ignore}[1]{}
+
+% use these two lines to force table positioning
+\usepackage{float} 
+\restylefloat{table}
 
 \begin{document}
 
@@ -122,7 +129,7 @@
 
 \setstretch{2} % double space the entire manuscript
 
-\title{Consuming altmetrics: some observations and lessons}
+\title{Consuming altmetrics: observations and lessons}
 
 \author{Scott Chamberlain}
 \email[E-mail: ]{scott@ropensci.org}
@@ -134,29 +141,29 @@
 
 \section*{Introduction}
 
-Altmetrics, or article level metrics, measure the impact of individual articles, or objects, usually at the object level, or the author level. This is in stark contrast to the Journal Impact Factor, which is a proprietary summation of the impact of all articles in a journal (owned and calculated by Thomson Reuters ©). Altmetrics have many advantages over journal level metrics, perhaps primarily that they give impact at the article or person level. In addition, altmetrics include far more than just citations, and provide metrics in a variety of domains, including discussion by the media (mentions in the news), discussion by the public (facebook likes, tweets), and importance to colleagues (citations). 
+Altmetrics, or article level metrics, measures the impact of individual articles, zor objects, usually at the object level (the word 'altmetrics' was coined by Jason Priem et al. \cite{priem2012}). This is in stark contrast to the Journal Impact Factor, which is a proprietary summation of the impact of all articles in a journal (owned and calculated by Thomson Reuters). Altmetrics have many advantages over journal level metrics, including the following three: a) Openness: Altmetrics are largely based off of data that is open to anyone (though there are some that aren't, e.g., Web of Science, Scopus). If data source are open conclusions based on altmetrics can be verified by others, and tools can be built on top of altmetrics; b) Speed: Altmetrics are nearly real-time metrics of scholarly impact \cite{priem2012} - citations can take years to accrue, but mentions and discussion that can be searched on the web take hours or days; c) Diversity of sources: Altmetrics include far more than just citations, and provide metrics in a variety of domains, including discussion by the media (mentions in the news), discussion by the public (facebook likes, tweets), and importance to colleagues (citations).
 
-There are many potential uses for altmetrics. Here are a number of use cases for conusming altmetrics: 
+There are many potential uses for altmetrics, including: 
 
 \begin{itemize}
-  \item \emph{Research}. As altmetrics rise in use and popularity, research on altmetrics themselves will inevitably become a more common use case. Some recent papers have answered the questions: How do different altmetrics relate to one another \cite{yan2011,bollen2009}? What is the role of Twitter in the lifecycle of a paper \cite{darling2013}? These questions involve collecting altmetrics in bulk from altmetrics providers, and manipulating, visualizing, and analyzing the data. This use case often requires using scripting languages (e.g., Python, Ruby, R) to consume altmetrics on a computer locally (rather than in a browser). Consuming altmetrics from this perspective is somewhat different than the use case in which a user looks at altmetrics in a web browser. This use case is the target use case on which this paper is based. 
+  \item \emph{Research}. As altmetrics rise in use and popularity, research on altmetrics themselves will inevitably become a more common use case. Some recent papers have answered the questions: How do different altmetrics relate to one another \cite{yan2011,bollen2009}? What is the role of Twitter in the lifecycle of a paper \cite{darling2013}? Can tweets predict citations \cite{eysenbach2011}? These questions involve collecting altmetrics in bulk from altmetrics providers, and manipulating, visualizing, and analyzing the data. This use case often requires using scripting languages (e.g., Python, Ruby, R) to consume altmetrics on a locally. Consuming altmetrics from this perspective is somewhat different than the use case in which a user views altmetrics hosted elsewhere in the cloud. The "local" use case is the target use case on which this paper is concerned. 
   \item \emph{Credit}. Scholars already put altmetrics on their CV's. With the rise of altmetrics, this will become much more common, especially with initiatives like that of NSF that allows scholars to get credit for \emph{products}, not just papers - and products like datasets and videos can not be measured by citations or Journal Imapact Factors. This use case will involve scholars with a wide variety of technical skills; and will likely be made easy with tools from ImpactStory or other providers. Piwowar and Priem discuss this use case further \cite{piwowar2013power}. 
   \item \emph{Filtering}. Scholars could not possibly find relavant papers efficiently given that there are now thousands of scholarly journals. Altmetrics can be used to filter. For example, Twitter can lead you to papers that are of great interest to people who's opinion you respect.
 \end{itemize}
 
 % cutout: Altmetrics can be consumed in a variety of contexts: as static text, images, or graphs alongside a pdf or website, as a javascript widget in a website and more.  
 
-This paper discusses altmetrics from the perspective of developing and using scripting interfaces for altmetrics. From this perspective, there are a number of considerations: where can you get altmetrics data; data standardization and consistency; putting altmetrics into context, or normalization; relavance of altmetrics; data provenance, and technical barriers.
+In this paper I discuss altmetrics from the perspective of developing and using scripting interfaces for altmetrics. From this perspective, there are a number of considerations: where can you get altmetrics data; data consistency; data provenance; altmetrics in context; and technical barriers to use.
 
 \section*{Altmetrics data providers}
 
-There are many publishers now presenting altmetrics alongside papers on their websites. However, these publishers do not yet provide public facing APIs (Application Programming Interface) for altmetrics data at the time of writing. There are four major entities that aggreagate and provide altmetrics data: PLoS, ImpactStory, and Altmetric, and Plum Analytics (see Table 1 for details). Plum Analytics does not have an open public facing interface or API, so will not be discussed further. There are a few other smaller scale altmetrics providers, such as CitedIn (\url{http://citedin.org/}) and ScienceCard (\url{http://sciencecard.org/}), but they will not be discussed futher here since they are relatively small. PLoS and ImpactStory have open APIs, while Altmetrics API limits API requests by hour and day, and by payed vs. non-payed accounts. PLoS provides data in JSON (JavaScript Object Notation) and XML (Extensible Metadata Language), ImpactStory in JSON only, and Altmetric in JSON and JSONP. In terms of granularity, PLoS provides much more granular data than the others, with daily, monthly and yearly totals; ImpactStory provides only total values; and Altmetric provides total values, plus incremental summaries of their proprietary Altmetric score. PLoS is a publisher, while the mission of the other two is to collect and provide altmetrics data. PLoS and ImpactStory are non-profit, while Altmetric is for-profit.
+There are a number of publishers now presenting altmetrics alongside peer-reviewed articles on their websites and on PDFs (for examples, see Wiley-Blackwell \cite{wiley}, Nature \cite{nature}, Public Library of Science \cite{plos}, Frontiers \cite{frontiers}, Biomed Central \cite{bmcentral}). Most of these publishers do not provide public facing APIs (Application Programming Interface - a way for computers to talk to one another) for altmetrics data, but instead use Altmetric or ImpactStory to provide altmetrics data on their papers - one exception is PLoS, which collects their own altmetrics, with an open API to use their altmetrics data. At the time of writing there are four major entities that aggreagate and provide altmetrics data: PLoS, ImpactStory, and Altmetric, and Plum Analytics (see Table 1 for details). \ignore{Plum Analytics does not have an open public facing interface or API, so will not be discussed further.} There are a few other smaller scale altmetrics providers, such as CitedIn (\cite{citedin}) and ScienceCard (\cite{sciencecard}), but are relatively small in scope and breadth. PLoS and ImpactStory have open APIs, while Altmetrics API limits API requests by hour and day, and by paid vs. non-paid accounts. PLoS provides data in JSON (JavaScript Object Notation) and XML (Extensible Metadata Language), ImpactStory in JSON only, and Altmetric in JSON and JSONP. PLoS provides much more granular data than the others, with daily, monthly and yearly totals; ImpactStory provides only total values; and Altmetric provides total values, plus incremental summaries of their proprietary Altmetric score. PLoS is a publisher, while the mission of the other two is to collect and provide altmetrics data. PLoS and ImpactStory are non-profit, while Altmetric is for-profit.
 
-The three providers overlap in some sources of altmetrics they gather, but not all (see Appendix Table A1). The fact that there is some complementarity in sources opens the possibility that different metrics can be combined from across the different providers to get more a complete set of altmetrics. For those that are compelementary, this should be relatively easy, and we don't have to worry about data consistency. However, when they share data sources, data may not be consistent between providers for the same data source (see \emph{Data standardization and consistency} below).
+The four providers overlap in some sources of altmetrics they gather, but not all (see Appendix Table A1). The fact that there is some complementarity in sources opens the possibility that different metrics can be combined from across the different providers to get more a complete set of altmetrics. For those that are compelementary, this should be relatively easy, and we don't have to worry about data consistency. However, when they share data sources, data may not be consistent between providers for the same data source (see \emph{Data standardization and consistency} below).
 
 One of the important aspects of altmetrics is that most of the data collected by altmetrics aggregators like ImpactStory is that they aren't creating the data themselves, but rather are collecting the data from other sources that have their own licences. Thus, data licenses for PLoS, ImpactStory, and Altmetric are generally restricted to match those of the original data provider (e.g., some data providers do not let anyone to cache data). 
 
-Note that in discussing the three providers, we are only aware of the details of each provider that are open to the public. For example, Altmetric and Plum Analytics provide some or all of their services to paying customers, which we don't cover here. 
+Note that in discussing the four providers, we are only aware of the details of each provider that are open to the public. For example, Altmetric and PlumAnalytics provide some or all of their services to paying customers, which I don't cover here. 
 
 \begin{table}[!ht]
     \begin{threeparttable}[b]
@@ -166,9 +173,9 @@ Note that in discussing the three providers, we are only aware of the details of
             Variable & PLoS & ImpactStory & Altmetric & Plum Analytics \\
             \hline
             Open API? & Yes & Yes & Limited\tnote{d} & No \\
-            Data format & JSON,XML & JSON & JSON,JSONP & Unknown \\
-            Granularity\tnote{b} & D,M,Y & T & I & Unknown \\
-            API Authentication & None & API key & API key & Unknown \\
+            Data format & JSON,XML & JSON & JSON,JSONP & JSON \\
+            Granularity\tnote{b} & D,M,Y & T & I & T \\
+            API Authentication & None & API key & API key & API key (contact first) \\
             Business type & Publisher & Altmetrics provider & Altmetrics provider & Altmetrics provider \\
             Non-profit & Yes & Yes & No & No \\
             Income based on charging & For publications & unknown & Publishers & Institutions \\
@@ -191,11 +198,12 @@ Note that in discussing the three providers, we are only aware of the details of
     \end{threeparttable}
 \end{table}
 
-\section*{Data standardization and consistency}
 
-Now that there are multiple providers for altmetrics data, data consistency is something to keep in mind. For example, PLoS, ImpactStory and Altmetric do collect altmetrics from some of the same data sources. Are the numbers they present to users the same for the same paper, or are they different due to different collection dates, data sources, or methods of collection? Each of the three providers of course has the right to collect metrics as needed for their purposes. However, as altmetrics consumers and researchers, we should have a clear understanding of the potential hazards when using altmetrics data for research or otherwise. 
+\section*{Consistency}
 
-I used a set of 565 DOIs for full articles from PLoS journals only - this way all three providers would have data on the papers. I collected metrics from each of the three providers for each of the 565 DOIs. However, only a subset of DOIs had data from all three providers, so the final sample size was 308. For each DOI I removed any missing values, and calculated the maximum difference between values (i.e., providers) and plotted the distribution of these maximum difference values for seven altmetrics that were shared among the providers (Fig. 1). Figure 1 shows that, at least with respect to absolute numbers, PMC metrics are very different among providers, while PLoS views (relavant only to PLoS ALM and ImpactStory) are somewhat less variable among providers. Most of the altmetrics are not very different among providers, with most values at zero, or no difference among providers. 
+Now that there are multiple providers for altmetrics data, data consistency is an important consideration. For example, PLoS, ImpactStory , Altmetric, and PlumAnalytics collect altmetrics from some of the same data sources. Are the numbers they present to users consisten for the same paper, or are they different due to different collection dates, data sources, or methods of collection? Each of the  providers that give aggregate altmetrics can collect and present altmetrics as needed for their target audience. However, as altmetrics consumers and researchers, we should have a clear understanding of the potential pitfalls when using altmetrics data for any purpose, especially research where data quality and consistenty is essential. 
+
+I used a set of 565 articles (using their DOIs to search by) from PLoS journals only - this way all four providers would have data on the articles. I collected metrics from each of the four providers for each of the 565 DOIs. Note that I excluded data from PlumAnalytics for Citeulike as it was not provided (but they do collect it; pers. comm. Andrea Michalek). In addition, Facebook data was exluded from PlumAnalytics results because it was unclear how to equate their data with the data from the other providers. For each DOI I removed any missing values, and calculated the maximum difference between values (i.e., providers) and plotted the distribution of these maximum difference values for seven altmetrics that were shared among the providers (Fig. 1). Figure 1 shows that, at least with respect to absolute numbers, PMC citations are very different among providers, while PLoS views (html + pdf views; relavant only to PLoS ALM, ImpactStory, and PlumAnalytics) are somewhat less variable among providers. The remaining metrics were not very different among providers, with most values at zero, or no difference at all. 
 
 
 
@@ -221,7 +229,7 @@ I used a set of 565 DOIs for full articles from PLoS journals only - this way al
 \end{knitrout}
 
 
-What explains the differences in numbers among providers for the same metrics on the same DOIs? Numbers could differ for a number of reasons. First, data could be collected from different middle-men. For example, Twitter data is notorious for not being persistent. Thus, you either have to query the Twitter firehose constantly and store data, or go through a company like Topsy to collect tweets. Whereas ImpactStory collects tweets from Topsy, PLoS ALM and Altmetric collect tweets in an undisclosed manner. Different middle-men sources could lead to different data. Second, data could be collected at different dates. This could easily result in different data even if data are collected from the same source. This is especially obvious as ImpactStory collects some metrics via the PLoS ALM API, so those metrics that ImpactStory has from the PLoS ALM API should be the same as those that PLoS has. Fortunately, date is supplied in the returned data for all providers. Thus, I examined whether or not date could explain differences in metrics from the different providers. Figure 2 shows that there are definitely some large differences in values that could be due differences in date the data was collected, but this is not always the case (i.e., there are a lot of large difference values with very small difference in dates). 
+What are some possible reasons why similar metrics differ across providers? Numbers could differ for a number of reasons. First, data could be collected from different middle-men. For example, Twitter data is notorious for not being persistent. Thus, you either have to query the Twitter firehose constantly and store data, or go through a company like Topsy to collect tweets. Whereas ImpactStory collects tweets from Topsy, PLoS ALM and Altmetric collect tweets with an unknown method. Different intermediary data sources could lead to different data. Second, data could be collected at different dates. This could easily result in different data even if data are collected from the same source. This is especially obvious as ImpactStory collects some metrics via the PLoS ALM API, so those metrics that ImpactStory has from the PLoS ALM API should be the same as those that PLoS has. Fortunately, date is supplied in the returned data by three of the providers (PLoS ALM, ImpactStory, and Altmetric). Thus, I examined whether or not date could explain differences in metrics from the different providers. Figure 2 shows that there are definitely some large differences in values that could be due differences in date the data was collected, but this is not always the case (i.e., there are a lot of large difference values with very small difference in dates). 
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}[]
@@ -238,7 +246,7 @@ What explains the differences in numbers among providers for the same metrics on
 \end{knitrout}
 
 
-That was a rough overview of hundreds of DOIs. What do the differences among providers look like in more detail? I used a set of 20 DOIs from the 565 above to show the value of each altmetric from each of the altmetrics providers for each of the 20 DOIs. Note that in some cases there is very close overlap in values for the same altmetric on the same DOI across providers, but in some cases the values are very different. 
+That was a rough overview of hundreds of DOIs. What do the differences among providers look like in more detail? I used a set of 20 DOIs from the 565 above to show the value of each altmetric from each of the altmetrics providers for each of the 20 DOIs (see Fig. 3). Note that in some cases there is very close overlap in values for the same altmetric on the same DOI across providers, but in some cases the values are very different. 
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}[]
@@ -255,20 +263,21 @@ That was a rough overview of hundreds of DOIs. What do the differences among pro
 \end{knitrout}
 
 
-An example giving what results look like may be instructive. Here is an example of calling the API of each the three providers to combine data from different sources, for the DOI \emph{10.1371/journal.pone.0018657} \cite{piwowar2011} (Table A2). In this case, only altmetrics that are shared among the providers are presented. There are many metrics that have exactly the same values among providers, though there are differences, which could be explained by the difference in the date data was collected. For example, PLoS ALM gives 6719 for combined PLoS views, while ImpactStory gives 6497 views. This is likely explained by the fact that PLoS ALM data was last updated on May 16, 2013, while ImpactStory's data was last updated on April 24, 2013. There are some oddities, however. For example, Altmetric gives 68 tweets, while ImpactStory only gives 22 tweets. ImpactStory's data was updated more recently (April 24, 2013) than that of Altmetric (November 14, 2012), which suggests something different about the way tweets among the two providers are collected as updated date alone can not explain the difference. In fact, Table A1 shows that ImpactStory collects tweets from Topsy (\url{http://topsy.com/}), while Altmetric collects them in an undisclosed manner, which obviously leads to different results.
+An example giving what results look like may be instructive. Here is an example of calling the API of each the four providers to combine data from different sources, for the DOI \emph{10.1371/journal.pbio.1001118} \cite{arslan2011} (Table A2). There are many metrics that have exactly the same values among providers, though there are differences, which could be explained by the difference in the date data was collected. For example, PLoS ALM gives 3845 for combined PLoS views, while ImpactStory gives 3746 views. This is undoubtedly explained by the fact that PLoS ALM data was last updated on May 24, 2013, while ImpactStory's data was last updated on May 18, 2013. There are some oddities, however. For example, Altmetric gives nine tweets, while ImpactStory only gives three tweets. ImpactStory's data was updated more recently (May 18, 2013) than that of Altmetric (July 28, 2012), which suggests something different about the way tweets among the two providers are collected as updated date alone can not explain the difference. In fact, Table A1 shows that ImpactStory collects tweets from Topsy (\url{http://topsy.com/}), while Altmetric collects them with an unknown method, which leads to different data.
 
 % latex table generated in R 2.15.3 by xtable 1.7-1 package
-% Tue May 21 13:02:20 2013
+% Fri May 24 12:11:12 2013
 \begin{table}[ht]
 \centering
 \caption{Example of combining results across three data providers on one DOI. Note that dates that data were last modified are the same for PLoS ALM and Altmetric, but different for ImpactStory. Missing values represent data that is not given by that provider.} 
-\begin{tabular}{lrrrrrrrl}
+\begin{tabular}{l|cccccccc}
   \hline
 provider & citeulike & scopus & ploscounter & pmc & facebook & mendeley & twitter & date\_modified \\ 
   \hline
-plosalm & 17 & 13 & 6798 & 392 & 7 & 93 & 0 & 2013-05-21 \\ 
-  altmetric & 17 &  &  &  & 1 & 92 & 71 & 2013-05-20 \\ 
-  impactstory &  & 13 & 6497 & 380 &  & 91 & 22 & 2013-04-24 \\ 
+PLoS ALM & 1 & 1 & 3845 & 192 & 8 & 11 & 0 & 2013-05-24 \\ 
+  Altmetric & 0 &  &  &  & 1 & 5 & 9 & 2012-07-28 \\ 
+  ImpactStory &  & 1 & 3746 & 192 &  & 11 & 3 & 2013-05-18 \\ 
+  PlumAnalytics &  & 1 & 3746 & 192 &  &  & 3 &  \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -281,42 +290,62 @@ plosalm & 17 & 13 & 6798 & 392 & 7 & 93 & 0 & 2013-05-21 \\
 %   \caption{A comparison of seven different altmetrics on a set of 20 DOIs from Altmetric, ImpactStory, and PLoS.} % caption line
 % \end{figure}
 
+The above findings on data consistency in fact suggest that altmetrics are inconsistent among providers of aggregate altmetrics. Casual users, and especially those conducting altmetrics research, should use caution when using altmetrics data.  
+
 \subsection*{A crosswalk among providers}
 
-As discussed above, when similar data sources are collected by altmetrics providers, ideally, there would be a way to go between, for example, data from Twitter for PLoS, ImpactStory, and Altmetric. Each of the three providers of course has the right to collect metrics as needed for their purposes, but as altmetrics consumers, we should be able to compare data from the same source across providers. In Appendix Table A1, I provide a table to crosswalk metrics for the same data source among providers.
+As discussed above, when similar data sources are collected by altmetrics providers, ideally, there would be a way to go between, for example, data from Twitter for PLoS, ImpactStory, Altmetric, and PlumAnalytics. Each of the four providers of course has the right to collect metrics as needed for their purposes, but as altmetrics consumers, we should be able to compare data from the same source across providers. In Appendix Table A1, I provide a table to crosswalk metrics for the same data source among providers.
 
-\section*{Data provenance}
+\section*{Altmetrics data provenance}
 
-Data for the same altmetrics resource could be calculated in different ways and collected at different times for the same object. The three providers already provide the date the metrics were updated. However, there is little information available, via their APIs at least, regarding how data were collected, and what, if any, calculations were done on the data before providing the data. The for-profit providers, Altmetric and Plum Analytics, especially have no obligation to share these, but the altmetrics community overall would benefit from transparency in how data are collected. 
+Altmetrics data comes from somewhere - tweets from Twitter, citations from Web of Science or Scopus, bookmarks from Citeulike, etc. Provenance is concerned with the origin of an object, the ability to trace where an object comes from in case there is any need to check or validate data. 
+
+Why should we care about provenance in altmetrics?  First, in general, altmetrics are based on completely digital data. This means that all use of, research on, hiring decisions based on, and conclusions drawn from, altmetrics data should theoretically be traceable back to the original production of that data. This is somewhat unusual - most research fields are based on data collected at some point that can not be traced - but this should be possible in altmetrics. Second, a specific example will demonstrate the power of data provenance in altmetrics. Imagine if a research paper makes controversial claims using altmetrics data on a set of objects (e.g., scholarly papers). An independent person could theoretically drill down into the data collected for that paper, and gain further insight, and potentially dispute or add to the latter mentioned paper.
+
+Data for the same altmetrics resource could be calculated in different ways and collected at different times for the same object. The four providers already provide the date the metrics were updated. However, there is little information available, via their APIs at least, regarding how data were collected, and what, if any, calculations were done on the data before providing the data. The altmetrics community overall would benefit from transparency in how data are collected. 
 
 A good step in the right direction is that ImpactStory provides a field named \emph{provenance\_url} with each metric data source. For example, for a recent paper \cite{piwowar2007}, a GET call to the ImpactStory API returns many metrics, one of which is 10 bookmarks on Delicious. Importantly, they also return the field \emph{provenance\_url}, in this case \url{http://www.delicious.com/url/9df9c6e819aa21a0e81ff8c6f4a52029}, which takes you directly to the human readble page on Delicous from where the data was collected. This is important for researchers as ideally all of our research is replicable. A nice bit about digital data such as altmetrics is that we can trace back final altmetrics from providers such as ImpactStory to their original source.
 
 The PLoS ALM API provides something less obvious with respect to provenance, a field called \emph{events\_url}, which for the same paper above \cite{piwowar2007} returns 82 bookmarks on Citeulike, and the human readable link to where the data was collected \url{http://www.citeulike.org/doi/10.1371/journal.pone.0000308}. 
 
-Plum Analytics does something interesting with respect to provencance - in addition to the cononical URL, they collect alias URLs for each object that they collect metrics on. For example, for the DOI \emph{10.1371/journal.pone.0018657}, they collect many URLs that point to that paper. This makes sense as a digital product is inevitably going to end up living at more than one URL, so collecting URL aliases is a good step forward for altmetrics. 
+Plum Analytics does something interesting with respect to provencance - in addition to the cononical URL, they collect alias URLs for each object that they collect metrics on. For example, for the DOI \emph{10.1371/journal.pone.0018657}, they collect many URLs that point to that paper. This makes sense as a digital product is inevitably going to end up living at more than one URL (the internete is a giant copying machine after all), so collecting URL aliases is a good step forward for altmetrics. It appears ImpactStory does this as well.
 
-What is ideal with respect to data provenance? Is the link to where the original data was collected enough? Probably so, if no calculations were done on the original data before reaching users. However, some of the providers do give numbers which have been calculated. For example, ImpactStory puts some metrics into context by calculating a percentage relative to a reference set. Ideally, how this is done should be very clear, and replicable. 
+What is ideal with respect to data provenance? Is the link to where the original data was collected enough? Probably so, if no calculations were done on the original data before reaching users. However, some of the providers do give numbers which have been calculated. For example, ImpactStory puts some metrics into context by calculating a percentage relative to a reference set. Ideally, how this is done should be very clear, and verifiable. 
 
-On a related note to provenance, historical data is often helpful in a research context, for example, to know the change in a metric, rather than the point value at a certain date. PLoS provides historical altmetrics data on all their metrics, while Altmetric provides only historical data on their Altmetric score (see below section \emph{Putting altmetrics in context}), and ImpactStory does not provide historical data. Of course, historical data, especially as more and more products are tracked, may become expensive to store, so perhaps won't be emphasized by altmetrics providers. In addition, a technical barrier comes in to play in that pushing a lot of data via an API call can get very time consuming. 
+On a related note to provenance, historical data is often helpful in a research context, for example, to know the change in a metric, rather than the point value at a certain date. PLoS provides historical altmetrics data on some of their metrics (except in case of licenses, e.g., Web of Science, Scopus), while Altmetric provides only historical data on their Altmetric score (see below section \emph{Putting altmetrics in context}), and ImpactStory does not provide historical data. Of course, historical data, especially as more and more products are tracked, may become expensive to store, so perhaps won't be emphasized by altmetrics providers. In addition, a technical barrier comes in to play in that pushing a lot of data via an API call can get very time consuming. 
 
 \section*{Putting altmetrics in context}
 
-Raw altmetrics data can be number of tweets, or number of html views on a publishers website. What do these numbers mean? How does the paper or dataset I care about compare to others? ImpactStory gives context to their scores by classifying scores along two dimensions: audience (scholars or public) and type of engagement (view, discuss, save, cite, recommend). Users can then determine whether a product (paper, dataset, etc.) was highly viewed, discussed, saved, cited, or recommended, and by scientists, or by the public. This abstracts away many details; however, users can drill down to the underlying data via their API and web interface.  Altmetric has a different approach. They provide context for only one metric, the altmetric score. This is a single aggregate metric, the calculation of which is not known. They do provide context for the altmetric score, including how it compares to a) all articles in the same journal, b) all articles in the same journal published within three weeks of the article, c) all articles in the Almetric database, and d) all articles in the Almetric database published within three weeks of the article. No context is given though for individual altmetrics (e.g., tweets). 
+Raw altmetrics data can be number of tweets, or number of html views on a publishers website. What do these numbers mean? How does the paper or dataset I care about compare to others? ImpactStory gives context to their scores by classifying scores along two dimensions: audience (scholars or public) and type of engagement (view, discuss, save, cite, recommend). Users can then determine whether a product (paper, dataset, etc.) was highly viewed, discussed, saved, cited, or recommended, and by scientists, or by the public. This abstracts away many details; however, users can drill down to the underlying data via their API and web interface.  Altmetric uses a different approach. They provide context for only one metric, the altmetric score. This is a single aggregate metric, the calculation of which is not known. They do provide context for the altmetric score, including how it compares to a) all articles in the same journal, b) all articles in the same journal published within three weeks of the article, c) all articles in the Almetric database, and d) all articles in the Almetric database published within three weeks of the article. Altmetric gives detailed context for some altmetrics, including Facebook, Twitter, and blogs (see e.g., \url{http://altmetric.com/details.php?citation_id=1270911}). PlumAnalytics do not combine altmetrics into a single score as does Almetric, but do bin similar types of altmetrics into captures, citations, social media, mentions, and usage (\url{http://www.plumanalytics.com/metrics.html}; though you can dive into the indivdiual altmetrics). 
 
-Future work should consider further dimensions of context. For example, perhaps users should be able to decide how to put their metrics into context - instead of getting raw values and values relative to a pre-chosen reference set, users could choose what reference they want to use for their specific purpose.  
+One of the advantages of altmetrics is the fact that they measure many different things, important to different stakeholders (public, scholars, funders) \cite{x,y}. Thus, combining altmetrics into a single score defeats one of the advantages of altmetrics over the traditional measure of impact, journal impact factor, a single metric summarising data on citations. The single Altmetric score is at first appealing given its apparent simplicity. However, if altmetrics are to avoid the mistakes befallen on the Journal Impact Factor \cite{ploseditorial}, we should strive for meaningful altmetrics important to different stakeholders, that retain their context (Tweets vs. citations). 
+
+A specific example highlights the importance of context. A recent paper of much interest titled \emph{Glass shape influences consumption rate for alcoholic beverages} \cite{attwood2012} on the date of writing has an Altmetric score of ~316. This score is compared relative to the same journal (PLoS One), and all journals at different points in time. Other altmetrics are reported but are not given any context. ImpactStory reports no single score, gives raw altmetrics data and gives context. For example, ImpactStory reports that there are 149 tweets that mentioned the paper, and this number of tweets puts the paper 97th-100th percentile of all Web of Science indexed articles that year (2012). This context for tweets about an article is more informative than knowing that the paper has an Altmetric score of 316 - people should know the context for what audience tweets represent, and number of tweets relative to a reference set gives a bit of information on the impact of the paper relative to others. Of course not all journals are indexed by Web of Science, and the important reference set for one person (e.g., papers in journals in their specific field) may be different from another (e.g., papers for colleagues at their university or department). 
+
+There is still work to with respect to context. Future work should consider further dimensions of context. For example, perhaps users should be able to decide how to put their metrics into context - instead of getting raw values and values relative to a pre-chosen reference set, users could choose what reference they want to use for their specific purpose. In addition, but much harder to achieve, is sentiment, or the meaning of the mention. That is, was a tweet or citation about a paper mentioned in a negative or positive light?
 
 % \section*{Relavance of altmetrics}
 % The internet has facilitated the existence of altmetrics, as measures of impact are all around us, and many are now machine readable. However, which altmetrics are % relavant? More importantly, which altmetrics are relavant to the community you care about? XXXX. [NOT SURE IT MAKES SENSE TO KEEP THIS SECTION???]
 
-\section{Open altmetrics}
+%\section*{Open altmetrics}
 
-The Journal Impact Factor (JIF), based on citation counts, the predecessor in a way to altmetrics, is a closed metric, calculated by one company, the calculation of which is unknown \cite{rossner2007show}. Given that the altmetrics movement is just at its begining, it has the chance to be a more transparent endeavour. There are a number of companies and apps appearing to provide services on top of altmetrics, some of which to create profits need to protect data outputs and the details of their operations.  Regardless, I think the altmetrics community can and should provide a level of transparency and openness that will allow research on, and use of, altmetrics. Openness in altmetrics can only be good for the science. If altmetrics are transparent, conclusions from papers, hiring decisions, and more can be verified by third parties. In addition, transparent altmetrics are less likely to be gamed, as they JIF has been gamed \cite{arnold2011}. Some good steps have been made to open altmetrics by altmetrics providers themselves. For example, many conferences and meetings have occurred where altmetrics providers and other interested parties hash out issues. 
+%The Journal Impact Factor (JIF), based on citation counts, the predecessor in a way to altmetrics, is a closed metric, calculated by one company, the calculation of which is unknown \cite{rossner2007show}. Given that the altmetrics movement is just at its begining, it has the chance to be a more transparent endeavour. There are a number of companies and apps appearing to provide services on top of altmetrics, some of which to create profits need to protect data outputs and the details of their operations.  Regardless, I think the altmetrics community can and should provide a level of transparency and openness that will allow research on, and use of, altmetrics. Openness in altmetrics can only be good for the science. If altmetrics are transparent, conclusions from papers, hiring decisions, and more can be verified by third parties. In addition, transparent altmetrics are less likely to be gamed, as they JIF has been gamed \cite{arnold2011}. Some good steps have been made to open altmetrics by altmetrics providers themselves. For example, many conferences and meetings have occurred where altmetrics providers and other interested parties hash out issues. 
 
-Another issue to consider in open altmetrics are the primary altmetrics sources. The difference between Twitter and App.net is a good example. Twitter makes money off advertisements and having a relatively closed system (\url{http://techonomy.com/2012/08/video-jack-dorsey-on-twitters-business-model/}). A better option, with similar data, would be App.net. App.net has a much smaller set of users relative to Twitter - however, App.net's business model is to charge users to use the service, but make the data very open. Twitter makes more money from closing down data, whereas App.net makes more money from opening up their data. There is currently a heavy dependence on Twitter in the altmetrics community. Perhaps we should think about building the scientific community on App.net where openness can thrive. 
+%Another issue to consider in open altmetrics are the primary altmetrics sources. The difference between Twitter and App.net is a good example. Twitter makes money off advertisements and having a relatively closed system (\url{http://techonomy.com/2012/08/video-jack-dorsey-on-twitters-business-model/}). A better option, with similar data, would be App.net. App.net has a much smaller set of users relative to Twitter - however, App.net's business model is to charge users to use the service, but make the data very open. Twitter makes more money from closing down data, whereas App.net makes more money from opening up their data. There is currently a heavy dependence on Twitter in the altmetrics community. Perhaps we should think about building the scientific community on App.net where openness can thrive. 
 
 \section*{Technical barriers to use}
 
-Some users of altmetrics may only require basic uses of altmetrics, like including altmetrics on their CV's \cite{piwowar2013power} to show the various impacts that their research has had. Some may want to go deeper, and collect altmetrics in mass. Using altmetrics via a scripting language means that the user has to consider whether the data source is machine readable, how easy the data is to retrieve and manipulate once retrieved, and whether they have to authenticate. First, of the three altmetrics providers discussed, all provide an API, which means their data is easily machine readable. Second, how data is returned to the user can be important if the user is interacting with the API directly. Fortunately, many libraries, or extensions, exist to a number of programming languages relavant to scholars, which deal with preparing the data for easy consumption for users (see Table 1 for links to libraries). Last, authentication can be a barrier to use in that if a user has to take extra step of authenticating, they may not bother. There are a variety of possible authentication methods, some of which include: a) no authentication, b) username and password pair, c) API key, and d) OAuth (including OAuth1 and OAuth2) (Table 1). These different options make sense in different use cases. The first, no authentication, used by PLoS, makes sense when an API is first released and testers are needed to get feedback. A benefit of an API with no authentication is the barrier to entry is lower. That is, if you don't have to ask a user to register to get an API key they are more likely to use the API. The second and third options, username/password pair and API key are relatively similar; API keys are used by both ImpactStory and Altmetric (Table 1). The last option, OAuth, is not used by any of the altmetrics providers. This authentication method is however used by many API providers. From the viewpoint of a consumer in a desktop scripting language, OAuth can be painful. What works better for scripting languages are the first three options.  
+Some altmetrics users may only require basic uses of altmetrics, like including altmetrics on their CV's \cite{piwowar2013power} to show the various impacts of their research. Some may want to go deeper, and perhaps collect altmetrics at finer time scales, or with more detailed data, than are given by altmetrics aggregate providers. What are the barriers to getting more detailed altmetrics data? 
+
+Diving deeper into altmetrics means considering whether one can access data, whether the data source is machine readable, and how easy the data is to retrieve and manipulate once retrieved. 
+
+\begin{itemize}
+  \item \emph{Data access} Many altmetrics sources are accessible as the data providers have open, or at least partly open, APIs (e.g., Crossref, PLoS). Other data sources can provide problems. For example, you can only get tweets from Twitter for the past 30 days, after which point you have to pay for a service that caches historical Twitter data (e.g, Topsy). Others are totally inaccessable (e.g., Google Scholar citations). 
+  \item \emph{Machine readable} Ideally, altmetrics are provided through an API. However, some metrics of interest may only be in PDFs, spreadsheets, or html, which can not be easily consumed and mashed up. For these metrics, the user should seek out aggregators such as those discussed in this paper to do the heavy lifting. Alternatively, technically savy researchers could write their own code, or leverage tools such as ScraperWiki \url{https://scraperwiki.com/}. 
+  \item \emph{Ease of use} Fortunately, many libraries, or extensions, exist for a number of programming languages relavant to scholars (Python, R), which deal with interacting with altmetricsc data (e.g., Figshare API libraries \cite{figshare}, Twitter API libraries \cite{twitter}). See Table 1 for links to libraries for aggregate providers. These libraries take care of the data collection and transform data to user friendly objects, allowing users to do the real work of analysis and inference.
+\end{itemize}
+
+%Last, authentication can be a barrier to use in that if a user has to take extra step of authenticating, they may not bother. There are a variety of possible authentication methods, some of which include: a) no authentication, b) username and password pair, c) API key, and d) OAuth (including OAuth1 and OAuth2) (Table 1). These different options make sense in different use cases. The first, no authentication, used by PLoS, makes sense when an API is first released and testers are needed to get feedback. A benefit of an API with no authentication is the barrier to entry is lower. That is, if you don't have to ask a user to register to get an API key they are more likely to use the API. The second and third options, username/password pair and API key are relatively similar; API keys are used by both ImpactStory and Altmetric (Table 1). The last option, OAuth, is not used by any of the altmetrics providers. This authentication method is however used by many API providers. From the viewpoint of a consumer in a desktop scripting language, OAuth can be painful. What works better for scripting languages are the first three options.  
 
 \section*{Conclusion}
 
@@ -324,7 +353,7 @@ XXXXXX
 
 \section*{Acknowledgments}
 
-I thank Martin Fenner for inviting me to write a paper in this special issue on altmetrics, and for helpful feedback from Carl Boettiger, Karthik Ram, and X on earlier versions of this manuscript.
+I thank Martin Fenner for inviting me to write a paper in this special issue on altmetrics, and for helpful feedback from Carl Boettiger and Karthik Ram on earlier versions of this manuscript.
   
 \section*{References}
 \bibliography{refs}
@@ -336,54 +365,72 @@ The following Table A1 provides a crosswalk between altmetrics data collected by
 \begin{table}[!ht]
 \begin{threeparttable}[b]
 \caption{Data sources used in taxize, tasks available, and links to them}
-\begin{tabular}{|B|B|L|C|}
+\begin{tabular}{|B|B|B|B|D}
 \hline
-\headcol Data source & PLoS\tnote{a} & ImpactStory\tnote{b} & Altmetric\tnote{c} \\
+\headcol Data source & PLoS\tnote{a} & ImpactStory\tnote{b} & Altmetric\tnote{c} & PlumAnalytics\tnote{d} \\
 \hline
 Biod & biod & No & No \\
-\rowcol Connotea & connotea & No & No \\
-General blogs & bloglines & No & No \\
-\rowcol Nature blogs & nature & No & No \\
-Postgenomic & postgenomic & No & No \\
-\rowcol Researchblogging & researchblogging & No & No \\
-WebOfScience citations & webofscience & No & No \\
-\rowcol Dryad & No & dryad:total\_downloads package\_views & No \\
-Figshare & No & figshare:views shares downloads & No \\
-\rowcol Github & No & github:forks stars & No \\
-PLoS Search & No & plossearch:mentions & No \\
-\rowcol Slideshare & No & slideshare:favorites views comments downloads & No \\
-Google+ & No & No & cited\_by\_gplus\_count \\
-\rowcol MSM & No & No & cited\_by\_msm\_count \\
-News articles & No & No & Yes \\
-\rowcol Reddit & No & No & cited\_by\_rdts\_count \\
-Citeulike & citeulike & citeulike:bookmarks & No \\
-\rowcol Crossref & crossref & plosalm:crossref\tnote{d} & No \\
-PLoS ALM & counter(pdf\_views + html\_views)\tnote{e} & plosalm(html\_views, pdf\_views) & No \\
-\rowcol PMC & pmc & plosalm:pmc\_full-text + pmc\_pdf\tnote{f} & No \\
-PubMed & pubmed & pubmed:pmc\_citations\tnote{g} & No \\
-\rowcol Scienceseeker & scienceseeker & scienceseeker:blog\_posts & No \\
-Scopus citations & scopus & plosalm:scopus\tnote{h} & No \\
-\rowcol Wikipedia & wikipedia & wikipedia:mentions & No \\
-Delicious & No & delicious:bookmarks & cited\_by\_delicious\_count \\
-\rowcol Facebook & facebook & facebook:shares\tnote{i} & cited\_by\_fbwalls\_count \\
-Mendeley readers & mendeley shares & mendeley readers\tnote{j} & mendeley readers \\
-\rowcol Twitter & twitter & topsy:tweets\tnote{k} & cited\_by\_tweeters\_count \\
+\rowcol Connotea & connotea & No & No & No \\
+Bloglines & bloglines & No & No & No \\
+\rowcol Nature blogs & nature & No & No & No\\
+Postgenomic & postgenomic & No & No & No \\
+\rowcol Researchblogging & researchblogging & No & No & ResearchBlogging \\
+WebOfScience citations & webofscience & No & No & No \\
+\rowcol Dryad & No & dryad:total\_downloads package\_views & No & Views, downloads \\
+Figshare & No & figshare:views shares downloads & No & Recommendations, downloads, views \\
+\rowcol Github & No & github:forks stars & No & Collaborators, downloads, followers, forks, watches, gists \\
+PLoS Search & No & plossearch:mentions & No & No \\
+\rowcol Slideshare & No & slideshare:favorites views comments downloads & No & Downloads, favorites, comments \\
+Google+ & No & No & cited by gplus count & No. +1's \\
+\rowcol MSM & No & No & cited by msm count & No \\
+News articles & No & No & Yes & Yes \\
+\rowcol Reddit & No & No & cited by rdts count & Comments, upvotes-downvotes \\
+Citeulike & citeulike & citeulike:bookmarks & No & Citeulike \\
+\rowcol Crossref & crossref & plosalm:crossref\tnote{e} & No & No \\
+PLoS ALM & counter(pdf\_views + html\_views)\tnote{f} & plosalm(html\_views, pdf\_views) & No & Views of abstract, figures, full text, html, pdf, supporting data \\
+\rowcol PMC & pmc & plosalm:pmc\_full-text + pmc\_pdf\tnote{g} & No & No \\
+PubMed & pubmed & pubmed:pmc\_citations\tnote{h} & No & Pumbed \\
+\rowcol Scienceseeker & scienceseeker & scienceseeker:blog\_posts & No & ScienceSeeker \\
+Scopus citations & scopus & plosalm:scopus\tnote{i} & No & Scopus \\
+\rowcol Wikipedia & wikipedia & wikipedia:mentions & No & Wikipedia \\
+Delicious & No & delicious:bookmarks & cited by delicious count & Delicious \\
+\rowcol Facebook & facebook\_shares & facebook:shares\tnote{j} & cited by fbwalls count & Facebook clicks, comments, likes \\
+Mendeley readers & mendeley shares & mendeley readers\tnote{k} & mendeley readers & Mendeley readers, groups \\
+\rowcol Twitter & twitter & topsy:tweets\tnote{l} & cited by tweeters count & Topsy tweets \\
 \hline
 \end{tabular}
-\begin{tablenotes}
+% \begin{tablenotes}
+%     \item[a] These are the exact names for each data source in the PLos ALM API. For example: \url{http://alm.plos.org/api/v3/articles?ids=10.1371/journal.pone.0018657&source=twitter}.
+%     \item[b] You can not request a specific source from the ImpactStory API, so these are the names of the fields in the returned json. For example, see the json from this call: \url{http://api.impactstory.org/v1/item/doi/10.1371/journal.pone.0018657?key=YOURAPIKEY}.
+%     \item[c] You can not request a specific source from the Altmetric API, so these are the names of the fields in the returned json. For example, see the json from this call: \url{http://api.altmetric.com/v1/doi/10.1371/journal.pbio.0018657?key=YOURAPIKEY}.
+%     \item[d] Some of these names are the exact names returned in an API call; others are not.
+%     \item[e] Collected from the PLoS ALM API. 
+%     \item[f] PLoS ALM also provides xml\_views. 
+%     \item[g] Collected from the PLoS ALM API. Other PMC data fields collected from PLoS ALM (pmc\_abstract, pmc\_supp-data, pmc\_figure, pmc\_unique-ip) and from PubMed (suppdata\_views, figure\_views, unique\_ip\_views, pdf\_downloads, abstract\_views, fulltext\_views).
+%     \item[h] Should be equivalent to plosalm:pubmed\_central. ImpactStory also collects pubmed:pmc\_citations\_reviews f1000 pmc\_citations\_editorials.
+%     \item[i] Collected from the PLoS ALM API. Scopus citations also collected from Scopus itself, in the field scopus:citations.
+%     \item[j] ImpactStory also collects Facebook clicks, comments, and likes. 
+%     \item[k] ImpactStory also collects Mendeley readers by discipline, number of groups that have added the article, percent of readers by country, and percent of readers by career\_stage. 
+%     \item[l] ImpactStory also collects the number of influential\_tweets from Topsy.
+% \end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+Footnotes from Table A1.
+
+\begin{itemize}
     \item[a] These are the exact names for each data source in the PLos ALM API. For example: \url{http://alm.plos.org/api/v3/articles?ids=10.1371/journal.pone.0018657&source=twitter}.
     \item[b] You can not request a specific source from the ImpactStory API, so these are the names of the fields in the returned json. For example, see the json from this call: \url{http://api.impactstory.org/v1/item/doi/10.1371/journal.pone.0018657?key=YOURAPIKEY}.
     \item[c] You can not request a specific source from the Altmetric API, so these are the names of the fields in the returned json. For example, see the json from this call: \url{http://api.altmetric.com/v1/doi/10.1371/journal.pbio.0018657?key=YOURAPIKEY}.
-    \item[d] Collected from the PLoS ALM API. 
-    \item[e] PLoS ALM also provides xml\_views. 
-    \item[f] Collected from the PLoS ALM API. Other PMC data fields collected from PLoS ALM (pmc\_abstract, pmc\_supp-data, pmc\_figure, pmc\_unique-ip) and from PubMed (suppdata\_views, figure\_views, unique\_ip\_views, pdf\_downloads, abstract\_views, fulltext\_views).
-    \item[g] Should be equivalent to plosalm:pubmed\_central. ImpactStory also collects pubmed:pmc\_citations\_reviews f1000 pmc\_citations\_editorials.
-    \item[h] Collected from the PLoS ALM API. Scopus citations also collected from Scopus itself, in the field scopus:citations.
-    \item[i] ImpactStory also collects Facebook clicks, comments, and likes. 
-    \item[j] ImpactStory also collects Mendeley readers by discipline, number of groups that have added the article, percent of readers by country, and percent of readers by career\_stage. 
-    \item[k] ImpactStory also collects the number of influential\_tweets from Topsy.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+    \item[d] Some of these names are the exact names returned in an API call; others are not.
+    \item[e] Collected from the PLoS ALM API. 
+    \item[f] PLoS ALM also provides xml\_views. 
+    \item[g] Collected from the PLoS ALM API. Other PMC data fields collected from PLoS ALM (pmc\_abstract, pmc\_supp-data, pmc\_figure, pmc\_unique-ip) and from PubMed (suppdata\_views, figure\_views, unique\_ip\_views, pdf\_downloads, abstract\_views, fulltext\_views).
+    \item[h] Should be equivalent to plosalm:pubmed\_central. ImpactStory also collects pubmed:pmc\_citations\_reviews f1000 pmc\_citations\_editorials.
+    \item[i] Collected from the PLoS ALM API. Scopus citations also collected from Scopus itself, in the field scopus:citations.
+    \item[j] ImpactStory also collects Facebook clicks, comments, and likes. 
+    \item[k] ImpactStory also collects Mendeley readers by discipline, number of groups that have added the article, percent of readers by country, and percent of readers by career\_stage. 
+    \item[l] ImpactStory also collects the number of influential\_tweets from Topsy.
+\end{itemize}
 
 \end{document}

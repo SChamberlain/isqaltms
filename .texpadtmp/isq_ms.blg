@@ -11,6 +11,9 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: isq_msNotes.bib
 Database file #2: ../refs.bib
+Warning--I didn't find a database entry for "arslan2011"
+Warning--I didn't find a database entry for "x"
+Warning--I didn't find a database entry for "y"
 control{REVTEX41Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
 control{apsrev41Control}, control.key{N/A}, control.author{00}, control.editor{1}, control.title{0}, control.pages{1}, control.year{0}, control.eprint{N/A}, 
 Warning--jnrlst (dependency: not reversed) set 1
@@ -24,45 +27,62 @@ Control: production of article title (0) allowed
 Control: page (1) range
 Control: year (0) verbatim
 Control: production of eprint (0) enabled
-You've used 7 entries,
+Warning--empty author in wiley
+Warning--empty year in wiley
+Warning--empty author in nature
+Warning--empty year in nature
+Warning--empty author in plos
+Warning--empty year in plos
+Warning--empty author in frontiers
+Warning--empty year in frontiers
+Warning--empty author in bmcentral
+Warning--empty year in bmcentral
+Warning--empty author in citedin
+Warning--empty year in citedin
+Warning--empty author in sciencecard
+Warning--empty year in sciencecard
+Warning--empty year in figshare
+Warning--empty author in twitter
+Warning--empty year in twitter
+You've used 20 entries,
             5847 wiz_defined-function locations,
-            1638 strings with 15438 characters,
-and the built_in function-call counts, 6102 in all, are:
-= -- 388
-> -- 129
-< -- 64
-+ -- 44
-- -- 44
-* -- 904
-:= -- 586
-add.period$ -- 10
-call.type$ -- 7
-change.case$ -- 25
-chr.to.int$ -- 17
-cite$ -- 7
-duplicate$ -- 621
-empty$ -- 407
-format.name$ -- 69
-if$ -- 1130
+            1693 strings with 17185 characters,
+and the built_in function-call counts, 14914 in all, are:
+= -- 1006
+> -- 252
+< -- 105
++ -- 106
+- -- 72
+* -- 2117
+:= -- 1499
+add.period$ -- 36
+call.type$ -- 20
+change.case$ -- 90
+chr.to.int$ -- 30
+cite$ -- 55
+duplicate$ -- 1528
+empty$ -- 1164
+format.name$ -- 131
+if$ -- 2827
 int.to.chr$ -- 1
-int.to.str$ -- 15
-missing$ -- 89
-newline$ -- 67
-num.names$ -- 15
-pop$ -- 262
+int.to.str$ -- 28
+missing$ -- 195
+newline$ -- 106
+num.names$ -- 27
+pop$ -- 757
 preamble$ -- 1
-purify$ -- 20
+purify$ -- 72
 quote$ -- 0
-skip$ -- 222
+skip$ -- 558
 stack$ -- 0
-substring$ -- 166
-swap$ -- 563
-text.length$ -- 12
+substring$ -- 365
+swap$ -- 1253
+text.length$ -- 26
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 79
-warning$ -- 2
-while$ -- 28
+type$ -- 236
+warning$ -- 19
+while$ -- 36
 width$ -- 0
-write$ -- 98
-(There were 2 warnings)
+write$ -- 186
+(There were 22 warnings)

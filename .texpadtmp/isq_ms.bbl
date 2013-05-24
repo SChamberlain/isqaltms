@@ -6,7 +6,7 @@
 %Control: page (1) range
 %Control: year (0) verbatim
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{5}%
+\begin{thebibliography}{18}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -50,6 +50,59 @@
 \providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
 \let\auto@bib@innerbib\@empty
 %</preamble>
+\bibitem [{\citenamefont {Priem}\ \emph {et~al.}(2012)\citenamefont {Priem},
+  \citenamefont {Taraborelli}, \citenamefont {Groth},\ and\ \citenamefont
+  {Neylon}}]{priem2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J}~\bibnamefont
+  {Priem}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Taraborelli}},
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Groth}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {C.}~\bibnamefont {Neylon}},\ }\href
+  {http://altmetrics.org/manifesto/} {\enquote {\bibinfo {title} {Altmetrics: A
+  manifesto},}\ } (\bibinfo {year} {2012})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Yan}\ and\ \citenamefont {Gerstein}(2011)}]{yan2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Koon-Kiu}\
+  \bibnamefont {Yan}}\ and\ \bibinfo {author} {\bibfnamefont {Mark}\
+  \bibnamefont {Gerstein}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
+  {The spread of scientific information: insights from the web usage statistics
+  in plos article-level metrics},}\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {PloS one}\ }\textbf {\bibinfo {volume} {6}},\ \bibinfo
+  {pages} {e19917} (\bibinfo {year} {2011})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bollen}\ \emph {et~al.}(2009)\citenamefont {Bollen},
+  \citenamefont {Van~de Sompel}, \citenamefont {Hagberg},\ and\ \citenamefont
+  {Chute}}]{bollen2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Johan}\ \bibnamefont
+  {Bollen}}, \bibinfo {author} {\bibfnamefont {Herbert}\ \bibnamefont {Van~de
+  Sompel}}, \bibinfo {author} {\bibfnamefont {Aric}\ \bibnamefont {Hagberg}}, \
+  and\ \bibinfo {author} {\bibfnamefont {Ryan}\ \bibnamefont {Chute}},\
+  }\bibfield  {title} {\enquote {\bibinfo {title} {A principal component
+  analysis of 39 scientific impact measures},}\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {PloS one}\ }\textbf {\bibinfo {volume} {4}},\
+  \bibinfo {pages} {e6022} (\bibinfo {year} {2009})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Darling}\ \emph {et~al.}(2013)\citenamefont
+  {Darling}, \citenamefont {Shiffman}, \citenamefont {Côté},\ and\
+  \citenamefont {Drew}}]{darling2013}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Emily~S}\ \bibnamefont
+  {Darling}}, \bibinfo {author} {\bibfnamefont {David}\ \bibnamefont
+  {Shiffman}}, \bibinfo {author} {\bibfnamefont {Isabelle~M.}\ \bibnamefont
+  {Côté}}, \ and\ \bibinfo {author} {\bibfnamefont {Joshua~A}\ \bibnamefont
+  {Drew}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {The role of
+  twitter in the life cycle of a scientific publication},}\ }\href {\doibase
+  10.7287/peerj.preprints.16v1} {\bibfield  {journal} {\bibinfo  {journal}
+  {PeerJ PrePrints}\ }\textbf {\bibinfo {volume} {1}},\ \bibinfo {pages}
+  {e16v1} (\bibinfo {year} {2013})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Eysenbach}(2011)}]{eysenbach2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Gunther}\ \bibnamefont
+  {Eysenbach}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Can tweets
+  predict citations? metrics of social impact based on twitter and correlation
+  with traditional metrics of scientific impact},}\ }\href {\doibase
+  10.2196/jmir.2012} {\bibfield  {journal} {\bibinfo  {journal} {Journal of
+  Medical Internet Research}\ }\textbf {\bibinfo {volume} {13}} (\bibinfo
+  {year} {2011}),\ 10.2196/jmir.2012}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Piwowar}\ and\ \citenamefont
   {Priem}(2013)}]{piwowar2013power}%
   \BibitemOpen
@@ -60,45 +113,87 @@
   {journal} {Bulletin of the American Society for Information Science and
   Technology}\ }\textbf {\bibinfo {volume} {39}},\ \bibinfo {pages} {10--13}
   (\bibinfo {year} {2013})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Piwowar}\ and\ \citenamefont
-  {Neylon}(2011)}]{piwowar2011}%
+\bibitem [{wil()}]{wiley}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Heather~A.}\
-  \bibnamefont {Piwowar}}\ and\ \bibinfo {author} {\bibfnamefont {Cameron}\
-  \bibnamefont {Neylon}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Who
-  shares? who doesn't? factors associated with openly archiving raw research
-  data},}\ }\href {\doibase 10.1371/journal.pone.0018657} {\bibfield  {journal}
-  {\bibinfo  {journal} {Plos One}\ }\textbf {\bibinfo {volume} {6}} (\bibinfo
-  {year} {2011}),\ 10.1371/journal.pone.0018657}\BibitemShut {NoStop}%
+  \bibfield  {title} {\enquote {\bibinfo {title} {Wiley altmetrics},}\
+  }\href@noop {} {\bibinfo  {journal}
+  {\url{http://onlinelibrary.wiley.com/doi/10.1111/2041-210X.12069/abstract}}\
+  }\BibitemShut {NoStop}%
+\bibitem [{nat()}]{nature}%
+  \BibitemOpen
+\bibfield  {journal} {  }\bibfield  {title} {\enquote {\bibinfo {title} {Nature
+  magazine altmetrics},}\ }\href@noop {} {\bibinfo  {journal}
+  {\url{http://www.nature.com/nature/journal/v497/n7450/nature12188/metrics}}\
+  }\BibitemShut {NoStop}%
+\bibitem [{plo()}]{plos}%
+  \BibitemOpen
+\bibfield  {journal} {  }\bibfield  {title} {\enquote {\bibinfo {title} {Public
+  library of science (plos) altmetrics},}\ }\href@noop {} {\bibinfo  {journal}
+  {\url{http://www.plosone.org/article/metrics/info:doi/10.1371/journal.pone.0064133}}\
+  }\BibitemShut {NoStop}%
+\bibitem [{fro()}]{frontiers}%
+  \BibitemOpen
+\bibfield  {journal} {  }\bibfield  {title} {\enquote {\bibinfo {title}
+  {Frontiers publishing altmetrics},}\ }\href@noop {} {\bibinfo  {journal}
+  {\url{http://www.frontiersin.org/Journal/AbstractImpact.aspx?s=1187&name=Statistical_Genetics_and_Methodology&ART_DOI=10.3389/fgene.2013.00086&type=1}}\
+  }\BibitemShut {NoStop}%
+\bibitem [{bmc()}]{bmcentral}%
+  \BibitemOpen
+\bibfield  {journal} {  }\bibfield  {title} {\enquote {\bibinfo {title}
+  {Biomedcentral altmetrics},}\ }\href@noop {} {\bibinfo  {journal}
+  {\url{http://www.altmetric.com/details.php?citation_id=704519}}\
+  }\BibitemShut {NoStop}%
+\bibitem [{cit()}]{citedin}%
+  \BibitemOpen
+\bibfield  {journal} {  }\bibfield  {title} {\enquote {\bibinfo {title}
+  {Citedin},}\ }\href@noop {} {\bibinfo  {journal} {\url{http://citedin.org/}}\
+  }\BibitemShut {NoStop}%
+\bibitem [{sci()}]{sciencecard}%
+  \BibitemOpen
+\bibfield  {journal} {  }\bibfield  {title} {\enquote {\bibinfo {title}
+  {Sciencecard},}\ }\href@noop {} {\bibinfo  {journal}
+  {\url{http://sciencecard.org/}}\ }\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Piwowar}\ \emph {et~al.}(2007)\citenamefont
   {Piwowar}, \citenamefont {Day},\ and\ \citenamefont {Fridsma}}]{piwowar2007}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Heather~A}\
-  \bibnamefont {Piwowar}}, \bibinfo {author} {\bibfnamefont {Roger~S}\
-  \bibnamefont {Day}}, \ and\ \bibinfo {author} {\bibfnamefont {Douglas~B}\
-  \bibnamefont {Fridsma}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
-  {Sharing detailed research data is associated with increased citation
-  rate},}\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {PLoS
-  One}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages} {e308} (\bibinfo
-  {year} {2007})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Rossner}\ \emph {et~al.}(2007)\citenamefont
-  {Rossner}, \citenamefont {Van~Epps},\ and\ \citenamefont
-  {Hill}}]{rossner2007show}%
+\bibfield  {journal} {  }\bibfield  {author} {\bibinfo {author} {\bibfnamefont
+  {Heather~A}\ \bibnamefont {Piwowar}}, \bibinfo {author} {\bibfnamefont
+  {Roger~S}\ \bibnamefont {Day}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {Douglas~B}\ \bibnamefont {Fridsma}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {Sharing detailed research data is associated with
+  increased citation rate},}\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+  {journal} {PLoS One}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages}
+  {e308} (\bibinfo {year} {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Editors}(2006)}]{ploseditorial}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Mike}\ \bibnamefont
-  {Rossner}}, \bibinfo {author} {\bibfnamefont {Heather}\ \bibnamefont
-  {Van~Epps}}, \ and\ \bibinfo {author} {\bibfnamefont {Emma}\ \bibnamefont
-  {Hill}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Show me the
-  data},}\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {The
-  Journal of cell biology}\ }\textbf {\bibinfo {volume} {179}},\ \bibinfo
-  {pages} {1091--1092} (\bibinfo {year} {2007})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Arnold}\ and\ \citenamefont
-  {Fowler}(2011)}]{arnold2011}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {AND The
+  PLoS~Medicine}\ \bibnamefont {Editors}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {The impact factor game},}\ }\href {\doibase
+  10.1371/journal.pmed.0030291} {\bibfield  {journal} {\bibinfo  {journal}
+  {PLoS Med}\ }\textbf {\bibinfo {volume} {3}},\ \bibinfo {pages} {e291}
+  (\bibinfo {year} {2006})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Attwood}\ \emph {et~al.}(2012)\citenamefont
+  {Attwood}, \citenamefont {Scott-Samuel}, \citenamefont {Stothart},
+  \citenamefont {Munafò},\ and\ \citenamefont {Laks}}]{attwood2012}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Douglas~N}\
-  \bibnamefont {Arnold}}\ and\ \bibinfo {author} {\bibfnamefont {Kristine~K}\
-  \bibnamefont {Fowler}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
-  {Nefarious numbers},}\ }\href@noop {} {\bibfield  {journal} {\bibinfo
-  {journal} {Notices of the AMS}\ }\textbf {\bibinfo {volume} {58}},\ \bibinfo
-  {pages} {434--437} (\bibinfo {year} {2011})}\BibitemShut {NoStop}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Angela~S.}\
+  \bibnamefont {Attwood}}, \bibinfo {author} {\bibfnamefont {Nicholas~E.}\
+  \bibnamefont {Scott-Samuel}}, \bibinfo {author} {\bibfnamefont {George}\
+  \bibnamefont {Stothart}}, \bibinfo {author} {\bibfnamefont {Marcus~R.}\
+  \bibnamefont {Munafò}}, \ and\ \bibinfo {author} {\bibfnamefont {Jerson}\
+  \bibnamefont {Laks}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Glass
+  shape influences consumption rate for alcoholic beverages},}\ }\href
+  {\doibase 10.1371/journal.pone.0043007} {\bibfield  {journal} {\bibinfo
+  {journal} {Plos One}\ }\textbf {\bibinfo {volume} {7}} (\bibinfo {year}
+  {2012}),\ 10.1371/journal.pone.0043007}\BibitemShut {NoStop}%
+\bibitem [{fig()}]{figshare}%
+  \BibitemOpen
+  \href@noop {} {\enquote {\bibinfo {title} {Figshare api libraries},}\
+  }\BibitemShut {NoStop}%
+\bibitem [{twi()}]{twitter}%
+  \BibitemOpen
+  \bibfield  {title} {\enquote {\bibinfo {title} {Twitter api libraries},}\
+  }\href@noop {} {\bibinfo  {journal}
+  {\url{https://dev.twitter.com/docs/twitter-libraries}}\ }\BibitemShut
+  {NoStop}%
 \end{thebibliography}%
