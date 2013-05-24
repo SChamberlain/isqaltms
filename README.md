@@ -8,5 +8,5 @@ This manuscript is written from the viewpoint of consuming altmetrics APIs, vs. 
 To compile, from the command line:
 
 + edit 'isq_ms.Rnw'
-+ go to folder: `cd isqaltms`
-+ run make all: `make tex`
++ run in terminal: `Rscript -e 'library(knitr); setwd("~/github/sac/isqaltms/"); knit("isq_ms.Rnw")'`
++ I then use Texpad OSX app to view and compile to pdf
