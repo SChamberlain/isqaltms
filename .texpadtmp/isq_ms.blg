@@ -44,45 +44,45 @@ Warning--empty year in sciencecard
 Warning--empty year in figshare
 Warning--empty author in twitter
 Warning--empty year in twitter
-You've used 20 entries,
+You've used 24 entries,
             5847 wiz_defined-function locations,
-            1693 strings with 17185 characters,
-and the built_in function-call counts, 14914 in all, are:
-= -- 1006
-> -- 252
-< -- 105
-+ -- 106
-- -- 72
-* -- 2117
-:= -- 1499
-add.period$ -- 36
-call.type$ -- 20
-change.case$ -- 90
-chr.to.int$ -- 30
-cite$ -- 55
-duplicate$ -- 1528
-empty$ -- 1164
-format.name$ -- 131
-if$ -- 2827
+            1723 strings with 17933 characters,
+and the built_in function-call counts, 18568 in all, are:
+= -- 1284
+> -- 311
+< -- 125
++ -- 130
+- -- 84
+* -- 2649
+:= -- 1888
+add.period$ -- 44
+call.type$ -- 24
+change.case$ -- 110
+chr.to.int$ -- 34
+cite$ -- 59
+duplicate$ -- 1882
+empty$ -- 1456
+format.name$ -- 161
+if$ -- 3536
 int.to.chr$ -- 1
-int.to.str$ -- 28
-missing$ -- 195
-newline$ -- 106
-num.names$ -- 27
-pop$ -- 757
+int.to.str$ -- 32
+missing$ -- 239
+newline$ -- 118
+num.names$ -- 39
+pop$ -- 903
 preamble$ -- 1
-purify$ -- 72
+purify$ -- 88
 quote$ -- 0
-skip$ -- 558
+skip$ -- 694
 stack$ -- 0
-substring$ -- 365
-swap$ -- 1253
-text.length$ -- 26
+substring$ -- 488
+swap$ -- 1570
+text.length$ -- 32
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 236
+type$ -- 286
 warning$ -- 19
-while$ -- 36
+while$ -- 48
 width$ -- 0
-write$ -- 186
+write$ -- 223
 (There were 22 warnings)

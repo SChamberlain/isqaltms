@@ -6,7 +6,7 @@
 %Control: page (1) range
 %Control: year (0) verbatim
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{18}%
+\begin{thebibliography}{22}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -50,6 +50,55 @@
 \providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
 \let\auto@bib@innerbib\@empty
 %</preamble>
+\bibitem [{\citenamefont {Garfield}(1955)}]{garfield1955}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Eugene}\ \bibnamefont
+  {Garfield}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Citation
+  indexes for science: A new dimension in documentation through association of
+  ideas},}\ }\href {\doibase 10.1126/science.122.3159.108} {\bibfield
+  {journal} {\bibinfo  {journal} {Science}\ }\textbf {\bibinfo {volume}
+  {122}},\ \bibinfo {pages} {108--111} (\bibinfo {year} {1955})},\ \Eprint
+  {http://arxiv.org/abs/http://www.sciencemag.org/content/122/3159/108.full.pdf}
+  {http://www.sciencemag.org/content/122/3159/108.full.pdf} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Garfield}(2006)}]{garfield2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Eugene}\ \bibnamefont
+  {Garfield}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {The history
+  and meaning of the journal impact factor},}\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {JAMA: the journal of the American Medical
+  Association}\ }\textbf {\bibinfo {volume} {295}},\ \bibinfo {pages} {90--93}
+  (\bibinfo {year} {2006})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Monastersky}(2005)}]{monastersky2005}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Richard}\ \bibnamefont
+  {Monastersky}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {The number
+  that$\backslash$'s devouring science},}\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {The Chronicle}\ } (\bibinfo {year} {2005})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Editors}(2006)}]{ploseditorial}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {AND The
+  PLoS~Medicine}\ \bibnamefont {Editors}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {The impact factor game},}\ }\href {\doibase
+  10.1371/journal.pmed.0030291} {\bibfield  {journal} {\bibinfo  {journal}
+  {PLoS Med}\ }\textbf {\bibinfo {volume} {3}},\ \bibinfo {pages} {e291}
+  (\bibinfo {year} {2006})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Rossner}\ \emph {et~al.}(2007)\citenamefont
+  {Rossner}, \citenamefont {Van~Epps},\ and\ \citenamefont
+  {Hill}}]{rossner2007}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Mike}\ \bibnamefont
+  {Rossner}}, \bibinfo {author} {\bibfnamefont {Heather}\ \bibnamefont
+  {Van~Epps}}, \ and\ \bibinfo {author} {\bibfnamefont {Emma}\ \bibnamefont
+  {Hill}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Show me the
+  data},}\ }\href {\doibase 10.1083/jcb.200711140} {\bibfield  {journal}
+  {\bibinfo  {journal} {The Journal of Cell Biology}\ }\textbf {\bibinfo
+  {volume} {179}},\ \bibinfo {pages} {1091--1092} (\bibinfo {year} {2007})},\
+  \Eprint
+  {http://arxiv.org/abs/http://jcb.rupress.org/content/179/6/1091.full.pdf+html}
+  {http://jcb.rupress.org/content/179/6/1091.full.pdf+html} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Priem}\ \emph {et~al.}(2012)\citenamefont {Priem},
   \citenamefont {Taraborelli}, \citenamefont {Groth},\ and\ \citenamefont
   {Neylon}}]{priem2012}%
@@ -164,14 +213,6 @@
   increased citation rate},}\ }\href@noop {} {\bibfield  {journal} {\bibinfo
   {journal} {PLoS One}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages}
   {e308} (\bibinfo {year} {2007})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Editors}(2006)}]{ploseditorial}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {AND The
-  PLoS~Medicine}\ \bibnamefont {Editors}},\ }\bibfield  {title} {\enquote
-  {\bibinfo {title} {The impact factor game},}\ }\href {\doibase
-  10.1371/journal.pmed.0030291} {\bibfield  {journal} {\bibinfo  {journal}
-  {PLoS Med}\ }\textbf {\bibinfo {volume} {3}},\ \bibinfo {pages} {e291}
-  (\bibinfo {year} {2006})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Attwood}\ \emph {et~al.}(2012)\citenamefont
   {Attwood}, \citenamefont {Scott-Samuel}, \citenamefont {Stothart},
   \citenamefont {Munafò},\ and\ \citenamefont {Laks}}]{attwood2012}%
