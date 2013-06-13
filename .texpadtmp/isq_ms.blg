@@ -11,9 +11,6 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: isq_msNotes.bib
 Database file #2: ../refs.bib
-Warning--I didn't find a database entry for "arslan2011"
-Warning--I didn't find a database entry for "x"
-Warning--I didn't find a database entry for "y"
 control{REVTEX41Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
 control{apsrev41Control}, control.key{N/A}, control.author{00}, control.editor{1}, control.title{0}, control.pages{1}, control.year{0}, control.eprint{N/A}, 
 Warning--jnrlst (dependency: not reversed) set 1
@@ -41,48 +38,49 @@ Warning--empty author in citedin
 Warning--empty year in citedin
 Warning--empty author in sciencecard
 Warning--empty year in sciencecard
+Warning--empty year in allen2013
 Warning--empty year in figshare
 Warning--empty author in twitter
 Warning--empty year in twitter
-You've used 24 entries,
+You've used 28 entries,
             5847 wiz_defined-function locations,
-            1723 strings with 17933 characters,
-and the built_in function-call counts, 18568 in all, are:
-= -- 1284
-> -- 311
-< -- 125
-+ -- 130
-- -- 84
-* -- 2649
-:= -- 1888
-add.period$ -- 44
-call.type$ -- 24
-change.case$ -- 110
-chr.to.int$ -- 34
-cite$ -- 59
-duplicate$ -- 1882
-empty$ -- 1456
-format.name$ -- 161
-if$ -- 3536
+            1741 strings with 18660 characters,
+and the built_in function-call counts, 22623 in all, are:
+= -- 1542
+> -- 418
+< -- 149
++ -- 164
+- -- 110
+* -- 3288
+:= -- 2295
+add.period$ -- 52
+call.type$ -- 28
+change.case$ -- 130
+chr.to.int$ -- 38
+cite$ -- 64
+duplicate$ -- 2282
+empty$ -- 1764
+format.name$ -- 221
+if$ -- 4326
 int.to.chr$ -- 1
-int.to.str$ -- 32
-missing$ -- 239
-newline$ -- 118
-num.names$ -- 39
-pop$ -- 903
+int.to.str$ -- 36
+missing$ -- 288
+newline$ -- 130
+num.names$ -- 51
+pop$ -- 1070
 preamble$ -- 1
-purify$ -- 88
+purify$ -- 104
 quote$ -- 0
-skip$ -- 694
+skip$ -- 844
 stack$ -- 0
-substring$ -- 488
-swap$ -- 1570
-text.length$ -- 32
+substring$ -- 549
+swap$ -- 1944
+text.length$ -- 45
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 286
-warning$ -- 19
-while$ -- 48
+type$ -- 343
+warning$ -- 20
+while$ -- 57
 width$ -- 0
-write$ -- 223
-(There were 22 warnings)
+write$ -- 259
+(There were 20 warnings)

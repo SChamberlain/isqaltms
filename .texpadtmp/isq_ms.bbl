@@ -6,7 +6,7 @@
 %Control: page (1) range
 %Control: year (0) verbatim
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{22}%
+\begin{thebibliography}{26}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -99,6 +99,16 @@
   {http://arxiv.org/abs/http://jcb.rupress.org/content/179/6/1091.full.pdf+html}
   {http://jcb.rupress.org/content/179/6/1091.full.pdf+html} \BibitemShut
   {NoStop}%
+\bibitem [{\citenamefont {Alberts}(2013)}]{alberts2013}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Bruce}\ \bibnamefont
+  {Alberts}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Impact factor
+  distortions},}\ }\href {\doibase 10.1126/science.1240319} {\bibfield
+  {journal} {\bibinfo  {journal} {Science}\ }\textbf {\bibinfo {volume}
+  {340}},\ \bibinfo {pages} {787} (\bibinfo {year} {2013})},\ \Eprint
+  {http://arxiv.org/abs/http://www.sciencemag.org/content/340/6134/787.full.pdf}
+  {http://www.sciencemag.org/content/340/6134/787.full.pdf} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Priem}\ \emph {et~al.}(2012)\citenamefont {Priem},
   \citenamefont {Taraborelli}, \citenamefont {Groth},\ and\ \citenamefont
   {Neylon}}]{priem2012}%
@@ -152,6 +162,20 @@
   10.2196/jmir.2012} {\bibfield  {journal} {\bibinfo  {journal} {Journal of
   Medical Internet Research}\ }\textbf {\bibinfo {volume} {13}} (\bibinfo
   {year} {2011}),\ 10.2196/jmir.2012}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Thelwall}\ \emph {et~al.}(2013)\citenamefont
+  {Thelwall}, \citenamefont {Haustein}, \citenamefont {Larivière},
+  \citenamefont {Sugimoto},\ and\ \citenamefont {Bornmann}}]{thelwall2013}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Mike}\ \bibnamefont
+  {Thelwall}}, \bibinfo {author} {\bibfnamefont {Stefanie}\ \bibnamefont
+  {Haustein}}, \bibinfo {author} {\bibfnamefont {Vincent}\ \bibnamefont
+  {Larivière}}, \bibinfo {author} {\bibfnamefont {Cassidy~R.}\ \bibnamefont
+  {Sugimoto}}, \ and\ \bibinfo {author} {\bibfnamefont {Lutz}\ \bibnamefont
+  {Bornmann}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {do altmetrics
+  work? twitter and ten other social web services},}\ }\href {\doibase
+  10.1371/journal.pone.0064841} {\bibfield  {journal} {\bibinfo  {journal}
+  {Plos One}\ }\textbf {\bibinfo {volume} {8}} (\bibinfo {year} {2013}),\
+  10.1371/journal.pone.0064841}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Piwowar}\ and\ \citenamefont
   {Priem}(2013)}]{piwowar2013power}%
   \BibitemOpen
@@ -202,17 +226,32 @@
 \bibfield  {journal} {  }\bibfield  {title} {\enquote {\bibinfo {title}
   {Sciencecard},}\ }\href@noop {} {\bibinfo  {journal}
   {\url{http://sciencecard.org/}}\ }\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Arslan}\ \emph {et~al.}(2011)\citenamefont {Arslan},
+  \citenamefont {Boyd}, \citenamefont {Dolci}, \citenamefont {Dodson},
+  \citenamefont {Boldt},\ and\ \citenamefont {Pilcher}}]{arslan2011}%
+  \BibitemOpen
+\bibfield  {journal} {  }\bibfield  {author} {\bibinfo {author} {\bibfnamefont
+  {Betül~K.}\ \bibnamefont {Arslan}}, \bibinfo {author} {\bibfnamefont
+  {Eric~S.}\ \bibnamefont {Boyd}}, \bibinfo {author} {\bibfnamefont {Wendy~W.}\
+  \bibnamefont {Dolci}}, \bibinfo {author} {\bibfnamefont {K.~Estelle}\
+  \bibnamefont {Dodson}}, \bibinfo {author} {\bibfnamefont {Marco~S.}\
+  \bibnamefont {Boldt}}, \ and\ \bibinfo {author} {\bibfnamefont {Carl~B.}\
+  \bibnamefont {Pilcher}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
+  {Workshops without walls: Broadening access to science around the world},}\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Plos Biology}\
+  }\textbf {\bibinfo {volume} {9}} (\bibinfo {year} {2011})}\BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Piwowar}\ \emph {et~al.}(2007)\citenamefont
   {Piwowar}, \citenamefont {Day},\ and\ \citenamefont {Fridsma}}]{piwowar2007}%
   \BibitemOpen
-\bibfield  {journal} {  }\bibfield  {author} {\bibinfo {author} {\bibfnamefont
-  {Heather~A}\ \bibnamefont {Piwowar}}, \bibinfo {author} {\bibfnamefont
-  {Roger~S}\ \bibnamefont {Day}}, \ and\ \bibinfo {author} {\bibfnamefont
-  {Douglas~B}\ \bibnamefont {Fridsma}},\ }\bibfield  {title} {\enquote
-  {\bibinfo {title} {Sharing detailed research data is associated with
-  increased citation rate},}\ }\href@noop {} {\bibfield  {journal} {\bibinfo
-  {journal} {PLoS One}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages}
-  {e308} (\bibinfo {year} {2007})}\BibitemShut {NoStop}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Heather~A}\
+  \bibnamefont {Piwowar}}, \bibinfo {author} {\bibfnamefont {Roger~S}\
+  \bibnamefont {Day}}, \ and\ \bibinfo {author} {\bibfnamefont {Douglas~B}\
+  \bibnamefont {Fridsma}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
+  {Sharing detailed research data is associated with increased citation
+  rate},}\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {PLoS
+  One}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages} {e308} (\bibinfo
+  {year} {2007})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Attwood}\ \emph {et~al.}(2012)\citenamefont
   {Attwood}, \citenamefont {Scott-Samuel}, \citenamefont {Stothart},
   \citenamefont {Munafò},\ and\ \citenamefont {Laks}}]{attwood2012}%
@@ -227,10 +266,17 @@
   {\doibase 10.1371/journal.pone.0043007} {\bibfield  {journal} {\bibinfo
   {journal} {Plos One}\ }\textbf {\bibinfo {volume} {7}} (\bibinfo {year}
   {2012}),\ 10.1371/journal.pone.0043007}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Allen}()}]{allen2013}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Liz}\ \bibnamefont
+  {Allen}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Providing context
+  to article-level metrics},}\ }\href@noop {} {\bibinfo  {journal}
+  {\url{http://www.plosone.org/article/metrics/info:doi/10.1371/journal.pone.0007595}}\
+  }\BibitemShut {NoStop}%
 \bibitem [{fig()}]{figshare}%
   \BibitemOpen
-  \href@noop {} {\enquote {\bibinfo {title} {Figshare api libraries},}\
-  }\BibitemShut {NoStop}%
+\bibfield  {journal} {  }\href@noop {} {\enquote {\bibinfo {title} {Figshare
+  api libraries},}\ }\BibitemShut {NoStop}%
 \bibitem [{twi()}]{twitter}%
   \BibitemOpen
   \bibfield  {title} {\enquote {\bibinfo {title} {Twitter api libraries},}\

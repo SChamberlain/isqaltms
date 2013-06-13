@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.5.23)  28 MAY 2013 21:39
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.5.23)  30 MAY 2013 22:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -520,6 +520,35 @@ Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 (/usr/local/texlive/2012/texmf-dist/tex/latex/threeparttable/threeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
 \@tempboxb=\box42
+) (/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/02/03 v3.3-65 Customizing captions (AR)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/02/03 v1.5-62 caption3 kernel (AR)
+\captionmargin=\dimen115
+\captionmargin@=\dimen116
+\captionwidth=\dimen117
+\caption@tempdima=\dimen118
+\caption@indent=\dimen119
+\caption@parindent=\dimen120
+\caption@hangindent=\dimen121
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->\par \vskip \abovecapti
+onskip \begingroup \small \rmfamily \sbox \@tempboxa {\let \\\heading@cr \@make
+@capt@title {#1}{#2}}\@ifdim {\wd \@tempboxa >\hsize }{\begingroup \samepage \f
+lushing \let \footnote \@footnotemark@gobble \@make@capt@title {#1}{#2}\par \en
+dgroup }{\global \@minipagefalse \hb@xt@ \hsize {\hfil \unhbox \@tempboxa \hfil
+ }}\endgroup \vskip \belowcaptionskip .
+\c@ContinuedFloat=\count106
+Package caption Info: hyperref package is loaded.
+Package caption Info: threeparttable package is loaded.
 ) (/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/scrextend.sty
 Package: scrextend 2012/07/29 v3.11b KOMA-Script KOMA-Script package (extend ot
 her classes with features of KOMA-Script classes)
@@ -538,7 +567,23 @@ Package: scrlfile 2012/06/15 v3.12 KOMA-Script package (loading files)
 Package scrlfile, 2012/06/15 v3.12 KOMA-Script package (loading files)
                   Copyright (C) Markus Kohm
 
-)))
+)
+
+/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/scrbase.sty:656: LaTeX
+ Error: Command \l@addto@macro already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.656 }
+       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+))
 
 LaTeX Warning: Command \@footnotemark  has changed.
                Check if current package is valid.
@@ -548,38 +593,38 @@ Package: setspace 2011/12/19 v6.7a set line spacing
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
-\Gm@cnth=\count106
-\Gm@cntv=\count107
-\c@Gm@tempcnt=\count108
-\Gm@bindingoffset=\dimen115
-\Gm@wd@mp=\dimen116
-\Gm@odd@mp=\dimen117
-\Gm@even@mp=\dimen118
-\Gm@layoutwidth=\dimen119
-\Gm@layoutheight=\dimen120
-\Gm@layouthoffset=\dimen121
-\Gm@layoutvoffset=\dimen122
+\Gm@cnth=\count107
+\Gm@cntv=\count108
+\c@Gm@tempcnt=\count109
+\Gm@bindingoffset=\dimen122
+\Gm@wd@mp=\dimen123
+\Gm@odd@mp=\dimen124
+\Gm@even@mp=\dimen125
+\Gm@layoutwidth=\dimen126
+\Gm@layoutheight=\dimen127
+\Gm@layouthoffset=\dimen128
+\Gm@layoutvoffset=\dimen129
 \Gm@dimlist=\toks20
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen123
-\lightrulewidth=\dimen124
-\cmidrulewidth=\dimen125
-\belowrulesep=\dimen126
-\belowbottomsep=\dimen127
-\aboverulesep=\dimen128
-\abovetopsep=\dimen129
-\cmidrulesep=\dimen130
-\cmidrulekern=\dimen131
-\defaultaddspace=\dimen132
-\@cmidla=\count109
-\@cmidlb=\count110
-\@aboverulesep=\dimen133
-\@belowrulesep=\dimen134
-\@thisruleclass=\count111
-\@lastruleclass=\count112
-\@thisrulewidth=\dimen135
+\heavyrulewidth=\dimen130
+\lightrulewidth=\dimen131
+\cmidrulewidth=\dimen132
+\belowrulesep=\dimen133
+\belowbottomsep=\dimen134
+\aboverulesep=\dimen135
+\abovetopsep=\dimen136
+\cmidrulesep=\dimen137
+\cmidrulekern=\dimen138
+\defaultaddspace=\dimen139
+\@cmidla=\count110
+\@cmidlb=\count111
+\@aboverulesep=\dimen140
+\@belowrulesep=\dimen141
+\@thisruleclass=\count112
+\@lastruleclass=\count113
+\@thisrulewidth=\dimen142
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
@@ -597,48 +642,48 @@ Package: amstext 2000/06/29 v2.01
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks22
-\ex@=\dimen136
+\ex@=\dimen143
 )
 LaTeX Info: Redefining \text on input line 39.
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
-\pmbraise@=\dimen137
+\pmbraise@=\dimen144
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count113
+\inf@bad=\count114
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count114
-\leftroot@=\count115
+\uproot@=\count115
+\leftroot@=\count116
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count116
-\DOTSCASE@=\count117
+\classnum@=\count117
+\DOTSCASE@=\count118
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box43
 \strutbox@=\box44
-\big@size=\dimen138
+\big@size=\dimen145
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count118
-\c@MaxMatrixCols=\count119
+\macc@depth=\count119
+\c@MaxMatrixCols=\count120
 \dotsspace@=\muskip11
-\c@parentequation=\count120
-\dspbrk@lvl=\count121
+\c@parentequation=\count121
+\dspbrk@lvl=\count122
 \tag@help=\toks23
-\row@=\count122
-\column@=\count123
-\maxfields@=\count124
+\row@=\count123
+\column@=\count124
+\maxfields@=\count125
 \andhelp@=\toks24
-\eqnshift@=\dimen139
-\alignsep@=\dimen140
-\tagshift@=\dimen141
-\tagwidth@=\dimen142
-\totwidth@=\dimen143
-\lineht@=\dimen144
+\eqnshift@=\dimen146
+\alignsep@=\dimen147
+\tagshift@=\dimen148
+\tagwidth@=\dimen149
+\totwidth@=\dimen150
+\lineht@=\dimen151
 \@envbody=\toks25
 \multlinegap=\skip52
 \multlinetaggap=\skip53
@@ -665,60 +710,47 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
 
-Package array Warning: Column D is already defined on input line 112.
+Package array Warning: Column D is already defined on input line 113.
 
-Package hyperref Info: Option `colorlinks' set `true' on input line 117.
-(/usr/local/texlive/2012/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count125
-\float@exts=\toks27
-\float@box=\box45
-\@float@everytoks=\toks28
-\@floatcapt=\box46
-)
-\@float@every@table=\toks29
+Package hyperref Info: Option `colorlinks' set `true' on input line 118.
 Class revtex4-1 Info: colortbl package is loaded. (Proceeding with fingers cros
-sed.) on input line 125.
-
-
-Class revtex4-1 Warning: Repair the float package.
-
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 125
+sed.) on input line 126.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 126
 .
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 125.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 125.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 125.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 126.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 126.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 126.
 (/Users/scottmac2/github/sac/isqaltms/.texpadtmp/isq_ms.aux)
 \openout1 = `isq_ms.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
 
 (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count126
-\scratchdimen=\dimen145
-\scratchbox=\box47
+\scratchdimen=\dimen152
+\scratchbox=\box45
 \nofMPsegments=\count127
 \nofMParguments=\count128
-\everyMPshowfont=\toks30
+\everyMPshowfont=\toks27
 \MPscratchCnt=\count129
-\MPscratchDim=\dimen146
+\MPscratchDim=\dimen153
 \MPnumerator=\count130
 \makeMPintoPDFobject=\count131
-\everyMPtoPDFconversion=\toks31
+\everyMPtoPDFconversion=\toks28
 ) (/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -734,8 +766,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box48
-Package hyperref Info: Link coloring ON on input line 125.
+\AtBeginShipoutBox=\box46
+Package hyperref Info: Link coloring ON on input line 126.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -745,15 +777,17 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count132
 )
-LaTeX Info: Redefining \ref on input line 125.
-LaTeX Info: Redefining \pageref on input line 125.
-LaTeX Info: Redefining \nameref on input line 125.
+LaTeX Info: Redefining \ref on input line 126.
+LaTeX Info: Redefining \pageref on input line 126.
+LaTeX Info: Redefining \nameref on input line 126.
 
 (/Users/scottmac2/github/sac/isqaltms/.texpadtmp/isq_ms.out)
 (/Users/scottmac2/github/sac/isqaltms/.texpadtmp/isq_ms.out)
 \@outlinefile=\write4
 \openout4 = `isq_ms.out'.
 
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -789,315 +823,173 @@ LaTeX Info: Redefining \nameref on input line 125.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 125.
+Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 126.
 \openout3 = `isq_msNotes.bib'.
 
 [1{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 149.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 150.
 
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 149.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 150.
  [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 195--196
-[]\OT1/cmr/m/n/10 R ([][]$\OT1/cmtt/m/n/10 https : / / github . com / ropensci 
-/ rimpactstory$[][]\OT1/cmr/m/n/10 ), Javascript ([][]$\OT1/cmtt/m/n/10 https :
- / / github . com / highwire /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 196--197
-[]\OT1/cmr/m/n/10 R ([][]$\OT1/cmtt/m/n/10 https : / / github . com / ropensci 
-/ rAltmetric$[][]\OT1/cmr/m/n/10 ), Python ([][]$\OT1/cmtt/m/n/10 https : / / g
-ithub . com / lnielsen-[]cern /
- []
-
-
-Overfull \hbox (7.34024pt too wide) in paragraph at lines 169--199
- [] 
+Underfull \hbox (badness 2799) in paragraph at lines 194--195
+[]\OT1/cmr/m/n/10 articles, code, soft-ware, pre-sen-ta-tions, datasets, books,
+ the-ses, etc. (see [][]$\OT1/cmtt/m/n/10 http : / / www .
  []
 
 [4]
 
-Package xcolor Warning: Incompatible color definition on input line 218.
+Package xcolor Warning: Incompatible color definition on input line 219.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 218.
+               Default added (so using `tbp') on input line 219.
 
-<figure/dataconst_plot1.png, id=139, 505.89pt x 505.89pt>
+<figure/dataconst_plot1.png, id=138, 505.89pt x 505.89pt>
 File: figure/dataconst_plot1.png Graphic file (type png)
 
 <use figure/dataconst_plot1.png>
-Package pdftex.def Info: figure/dataconst_plot1.png used on input line 221.
+Package pdftex.def Info: figure/dataconst_plot1.png used on input line 222.
 (pdftex.def)             Requested size: 328.82707pt x 328.8323pt.
  [5]
 
-Package xcolor Warning: Incompatible color definition on input line 235.
+Package xcolor Warning: Incompatible color definition on input line 236.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 235.
+               Default added (so using `tbp') on input line 236.
 
-<figure/dataconst_plot2.png, id=145, 505.89pt x 505.89pt>
+<figure/dataconst_plot2.png, id=150, 505.89pt x 505.89pt>
 File: figure/dataconst_plot2.png Graphic file (type png)
 
 <use figure/dataconst_plot2.png>
-Package pdftex.def Info: figure/dataconst_plot2.png used on input line 238.
+Package pdftex.def Info: figure/dataconst_plot2.png used on input line 239.
 (pdftex.def)             Requested size: 328.82707pt x 328.8323pt.
+ [6 <./figure/dataconst_plot1.png>]
 
-
-Package xcolor Warning: Incompatible color definition on input line 252.
+Package xcolor Warning: Incompatible color definition on input line 253.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 252.
+               Default added (so using `tbp') on input line 253.
 
-<figure/dataconst2.png, id=146, 505.89pt x 505.89pt>
+<figure/dataconst2.png, id=157, 505.89pt x 505.89pt>
 File: figure/dataconst2.png Graphic file (type png)
 
 <use figure/dataconst2.png>
-Package pdftex.def Info: figure/dataconst2.png used on input line 255.
+Package pdftex.def Info: figure/dataconst2.png used on input line 256.
 (pdftex.def)             Requested size: 328.82707pt x 328.8323pt.
+ [7 <./figure/dataconst_plot2.png>] [8 <./figure/dataconst2.png>] [9] [10] [11]
+ [12] [13]
+(/Users/scottmac2/github/sac/isqaltms/.texpadtmp/isq_ms.bbl [14]
+Underfull \hbox (badness 10000) in paragraph at lines 105--114
+[]\OT1/cmr/m/n/9 Bruce Al-berts, ``Im-pact fac-tor dis-tor-tions,'' [][]Sci-enc
+e \OT1/cmr/bx/n/9 340\OT1/cmr/m/n/9 , 787 (2013)[][],
+ []
 
 
-Package natbib Warning: Citation `arslan2011' on page 6 undefined on input line
- 266.
-
-[6pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
-has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.267 
-       <./figure/dataconst_plot1.png>] [7pdfTeX warning (ext4): destination wit
-h the same identifier (name{figure.2}) has been already used, duplicate ignored
-
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.294 
-       <./figure/dataconst_plot2.png>] [8pdfTeX warning (ext4): destination wit
-h the same identifier (name{figure.3}) has been already used, duplicate ignored
-
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.298 
-       <./figure/dataconst2.png>] [9] [10]
-
-Package natbib Warning: Citation `x' on page 11 undefined on input line 319.
-
-
-Package natbib Warning: Citation `y' on page 11 undefined on input line 319.
-
-[11] [12] [13] (/Users/scottmac2/github/sac/isqaltms/.texpadtmp/isq_ms.bbl
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 186--189
+Underfull \hbox (badness 10000) in paragraph at lines 210--213
 []\OT1/cmr/m/n/9 ``Frontiers pub-lish-ing alt-met-rics,'' [][]$\OT1/cmtt/m/n/9 
 http : / / www . frontiersin . org / Journal / AbstractImpact . aspx ? s =
  []
 
-)
-Overfull \hbox (5.89604pt too wide) in paragraph at lines 381--382
-[]|\OT1/cmr/m/n/10 ResearchBlogging| 
+[15]) [16]
+Overfull \hbox (5.89604pt too wide) in paragraph at lines 388--389
+[]|\OT1/cmr/m/n/10 ResearchBlogging|  
  []
 
 
-Overfull \hbox (11.93643pt too wide) in paragraph at lines 383--383
-[]|\OT1/cmr/m/n/10 dryad:total[]downloads
+Overfull \hbox (11.93643pt too wide) in paragraph at lines 390--390
+[]|\OT1/cmr/m/n/10 dryad:total[]downloads 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--384
-[]|\OT1/cmr/m/n/10 Views, down-
+Overfull \hbox (11.28496pt too wide) in paragraph at lines 391--392
+[]|\OT1/cmr/m/n/10 Recommendations, 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--384
-[]|\OT1/cmr/m/n/10 figshare:views
+Overfull \hbox (0.94745pt too wide) in paragraph at lines 393--393
+[]|\OT1/cmr/m/n/10 plossearch:mentions|  
  []
 
 
-Overfull \hbox (11.28496pt too wide) in paragraph at lines 384--385
-[]|\OT1/cmr/m/n/10 Recommendations,
+Overfull \hbox (1.39197pt too wide) in paragraph at lines 399--399
+[]|\OT1/cmr/m/n/10 citeulike:bookmarks|  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--385
-\OT1/cmr/m/n/10 down-loads,
+Overfull \hbox (2.24194pt too wide) in paragraph at lines 401--401
+[]|\OT1/cmr/m/n/10 plosalm(html[]views, 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 385--386
-[]|\OT1/cmr/m/n/10 Collaborators,
+Overfull \hbox (11.63086pt too wide) in paragraph at lines 403--403
+[]|\OT1/cmr/m/n/10 pubmed:pmc[]citations|  
  []
 
 
-Underfull \hbox (badness 1859) in paragraph at lines 385--386
-\OT1/cmr/m/n/10 down-loads, fol-
+Overfull \hbox (18.21411pt too wide) in paragraph at lines 404--404
+[]|\OT1/cmr/m/n/10 scienceseeker:blog[]posts|  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 385--386
-\OT1/cmr/m/n/10 low-ers, forks,
+Overfull \hbox (2.55864pt too wide) in paragraph at lines 407--407
+[]|\OT1/cmr/m/n/10 delicious:bookmarks|  
  []
 
-
-Overfull \hbox (0.94745pt too wide) in paragraph at lines 386--386
-[]|\OT1/cmr/m/n/10 plossearch:mentions| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 387--387
-[]|\OT1/cmr/m/n/10 slideshare:favorites
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 387--387
-\OT1/cmr/m/n/10 views com-ments
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 387--388
-[]|\OT1/cmr/m/n/10 Downloads,
- []
-
-
-Underfull \hbox (badness 4048) in paragraph at lines 387--388
-\OT1/cmr/m/n/10 fa-vorites, com-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 391--392
-[]|\OT1/cmr/m/n/10 Comments,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 391--392
-\OT1/cmr/m/n/10 upvotes-
- []
-
-
-Overfull \hbox (1.39197pt too wide) in paragraph at lines 392--392
-[]|\OT1/cmr/m/n/10 citeulike:bookmarks| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 394--394
-[]|\OT1/cmr/m/n/10 counter(pdf[]views
- []
-
-
-Overfull \hbox (2.24194pt too wide) in paragraph at lines 394--394
-[]|\OT1/cmr/m/n/10 plosalm(html[]views,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 394--395
-[]|\OT1/cmr/m/n/10 Views of ab-
- []
-
-
-Underfull \hbox (badness 7379) in paragraph at lines 394--395
-\OT1/cmr/m/n/10 stract, fig-ures,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 395--395
-[]|\OT1/cmr/m/n/10 plosalm:pmc[]full-
- []
-
-
-Overfull \hbox (11.63086pt too wide) in paragraph at lines 396--396
-[]|\OT1/cmr/m/n/10 pubmed:pmc[]citations[]| 
- []
-
-
-Overfull \hbox (18.21411pt too wide) in paragraph at lines 397--397
-[]|\OT1/cmr/m/n/10 scienceseeker:blog[]posts| 
- []
-
-
-Overfull \hbox (2.55864pt too wide) in paragraph at lines 400--400
-[]|\OT1/cmr/m/n/10 delicious:bookmarks| 
- []
-
-
-Underfull \hbox (badness 2495) in paragraph at lines 400--400
-[]|\OT1/cmr/m/n/10 cited by de-li-cious
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 401--401
-[]|\OT1/cmr/m/n/10 cited by fb-walls
- []
-
-
-Underfull \hbox (badness 1259) in paragraph at lines 402--403
-[]|\OT1/cmr/m/n/10 Mendeley read-
- []
-
-
-Underfull \hbox (badness 3977) in paragraph at lines 403--403
-[]|\OT1/cmr/m/n/10 cited by tweet-ers
- []
-
-[15] [16]
-Overfull \hbox (31.27931pt too wide) in paragraph at lines 432--433
+[17] [18]
+Overfull \hbox (31.27931pt too wide) in paragraph at lines 442--443
 \OT1/cmr/m/n/10 pmc[]supp-data, pmc[]figure, pmc[]unique-ip) and from PubMed (s
 up-p-data[]views, fig-ure[]views, unique[]ip[]views,
  []
 
 
-Overfull \hbox (11.03665pt too wide) in paragraph at lines 433--434
+Overfull \hbox (11.03665pt too wide) in paragraph at lines 443--444
 []\OT1/cmr/m/n/10 Should be equiv-a-lent to plosalm:pubmed[]central. Im-pact-St
 ory also col-lects pubmed:pmc[]citations[]reviews
  []
 
-
-Package natbib Warning: There were undefined citations.
-
-[17]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 440.
+[19]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 450.
  (/Users/scottmac2/github/sac/isqaltms/.texpadtmp/isq_ms.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 440.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 440.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 450.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 450.
 Package rerunfilecheck Info: File `isq_ms.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 9785 strings out of 493481
- 140052 string characters out of 3140965
- 297936 words of memory out of 3000000
- 12882 multiletter control sequences out of 15000+200000
- 9751 words of font info for 36 fonts, out of 3000000 for 9000
+ 10721 strings out of 493481
+ 157601 string characters out of 3140965
+ 305770 words of memory out of 3000000
+ 13809 multiletter control sequences out of 15000+200000
+ 9443 words of font info for 35 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 36i,18n,39p,1892b,532s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
-usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
-r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/l
-ocal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
-l/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
-exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texl
-ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
-ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
-/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2
-012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/201
-2/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2012
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2012/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2012/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+ 36i,15n,39p,2151b,551s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><
+/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/
+local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loc
+al/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
+texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
+live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
+ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texliv
+e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/
+2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/20
+12/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/201
+2/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2012/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2012/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
 Output written on /Users/scottmac2/github/sac/isqaltms/.texpadtmp/isq_ms.pdf (1
-7 pages, 382329 bytes).
+9 pages, 374199 bytes).
 PDF statistics:
- 323 PDF objects out of 1000 (max. 8388607)
- 278 compressed objects within 3 object streams
- 61 named destinations out of 1000 (max. 500000)
+ 341 PDF objects out of 1000 (max. 8388607)
+ 295 compressed objects within 3 object streams
+ 69 named destinations out of 1000 (max. 500000)
  128 words of extra memory for PDF output out of 10000 (max. 10000000)
 
